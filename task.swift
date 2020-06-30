@@ -12,9 +12,10 @@ struct Task {
     var title:String
     var subTitle:String?
     var isOn: Bool
+    var label:String = "鬧鐘"
 }
 
 protocol timeSet {
-    func timeSetting(value: String?)
+    func timeSetting(time: String?, label: String?)
 }
 

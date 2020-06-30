@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     
     
     func popAddAlarm() {
-        performSegue(withIdentifier: "popAdd", sender: nil)
+        performSegue(withIdentifier: "addAlarm", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,9 +74,9 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ViewController : timeSet {
-    func timeSetting(value: String?) {
-        if let time = value {
-            let newAlarm = Task(title: time, subTitle: "", isOn: true)
+    func timeSetting(time: String?, label: String?) {
+        if let time = time, let label = label{
+            let newAlarm = Task(title: time, subTitle: label, isOn: true)
             alarmList.append(newAlarm)
             let newTex = IndexPath(row: self.alarmList.count - 1, section: 0)
             self.myTableView.insertRows(at: [newTex], with: .automatic)

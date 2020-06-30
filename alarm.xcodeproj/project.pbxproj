@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB2BC84D24AAED9B00947588 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BC84C24AAED9B00947588 /* LabelViewController.swift */; };
 		FB61CFD324A9CB39004EF8C8 /* MainPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61CFD124A9CB39004EF8C8 /* MainPageTableViewCell.swift */; };
 		FB61CFD424A9CB39004EF8C8 /* MainPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB61CFD224A9CB39004EF8C8 /* MainPageTableViewCell.xib */; };
 		FBFC599124A447EC0050C94B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC599024A447EC0050C94B /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB2BC84C24AAED9B00947588 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		FB61CFD124A9CB39004EF8C8 /* MainPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageTableViewCell.swift; sourceTree = "<group>"; };
 		FB61CFD224A9CB39004EF8C8 /* MainPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPageTableViewCell.xib; sourceTree = "<group>"; };
 		FBFC598D24A447EC0050C94B /* alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 				FBFC599024A447EC0050C94B /* AppDelegate.swift */,
 				FBFC599224A447EC0050C94B /* SceneDelegate.swift */,
 				FBFC599624A447EC0050C94B /* Main.storyboard */,
+				FB2BC84C24AAED9B00947588 /* LabelViewController.swift */,
 				FBFC59B024A47B780050C94B /* EditingTableView */,
 				FBFC59AB24A475BC0050C94B /* addAlarm */,
 				FBFC599924A447ED0050C94B /* Assets.xcassets */,
@@ -190,6 +193,7 @@
 				FBFC59AE24A47B730050C94B /* EditingTableViewController.swift in Sources */,
 				FB61CFD324A9CB39004EF8C8 /* MainPageTableViewCell.swift in Sources */,
 				FBFC59A924A475670050C94B /* AddAlarmViewController.swift in Sources */,
+				FB2BC84D24AAED9B00947588 /* LabelViewController.swift in Sources */,
 				FBFC599124A447EC0050C94B /* AppDelegate.swift in Sources */,
 				FBFC599324A447EC0050C94B /* SceneDelegate.swift in Sources */,
 				FBFC59B324A47C0D0050C94B /* EditingTableViewCell.swift in Sources */,

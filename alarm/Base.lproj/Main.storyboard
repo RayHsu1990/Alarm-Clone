@@ -59,7 +59,7 @@
         <!--Add Alarm View Controller-->
         <scene sceneID="1JO-1g-k4b">
             <objects>
-                <viewController id="UhA-rt-2X6" customClass="AddAlarmViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddAlarmVC" id="UhA-rt-2X6" customClass="AddAlarmViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MAR-1U-98U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,7 +107,9 @@
                     <connections>
                         <outlet property="myContainView" destination="GbM-eL-SzW" id="ysD-NP-z3W"/>
                         <outlet property="myTimePicker" destination="0MN-Ck-2sT" id="Pse-ji-7F5"/>
-                        <segue destination="ft7-if-EeW" kind="show" identifier="labelPage" id="J2Y-UP-cMf"/>
+                        <segue destination="ft7-if-EeW" kind="popoverPresentation" identifier="labelPageSegue" popoverAnchorView="GbM-eL-SzW" id="tzZ-Gi-ypL">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLK-cF-u7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -117,7 +119,7 @@
         <!--Editing Table View Controller-->
         <scene sceneID="eA8-ZY-gHL">
             <objects>
-                <tableViewController id="YkJ-Xg-TcK" customClass="EditingTableViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EditingTableVC" id="YkJ-Xg-TcK" customClass="EditingTableViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vnx-Td-wrI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="309"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,7 +134,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfQ-ix-VLl">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="永不" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfQ-ix-VLl">
                                                     <rect key="frame" x="313" y="14.5" width="60" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="V0O-J6-QeY"/>
@@ -178,7 +180,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5g0-3e-XZ3">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鬧鐘" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5g0-3e-XZ3">
                                                     <rect key="frame" x="313" y="14.5" width="60" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="SR5-HU-dK8"/>
@@ -214,7 +216,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpq-BK-RCH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="無" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpq-BK-RCH">
                                                     <rect key="frame" x="313" y="14.5" width="60" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="bic-f5-xHy"/>
@@ -314,10 +316,10 @@
             </objects>
             <point key="canvasLocation" x="1933" y="-338"/>
         </scene>
-        <!--View Controller-->
+        <!--Label View Controller-->
         <scene sceneID="hyo-bh-5iX">
             <objects>
-                <viewController id="ft7-if-EeW" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LabelVC" id="ft7-if-EeW" customClass="LabelViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aNJ-Pd-8cc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

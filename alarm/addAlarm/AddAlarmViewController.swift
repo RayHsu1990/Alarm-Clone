@@ -17,10 +17,12 @@ class AddAlarmViewController: UIViewController {
     var task: Task?
     var okTime:String?
     var index: Int?
+    var alarmLabel:String = "鬧鐘"
 //    var repeatDate:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     @IBAction func timePick(_ sender: UIDatePicker) {
@@ -40,7 +42,13 @@ class AddAlarmViewController: UIViewController {
 //    }
     
     @IBAction func clickSaveButton(_ sender: UIBarButtonItem) {
-        delegate?.timeSetting(value: okTime)
+        if let okTime = okTime {
+            delegate?.timeSetting(time: okTime, label: alarmLabel)
+        }else {
+            pickTime()
+            delegate?.timeSetting(time: okTime, label: alarmLabel)
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
