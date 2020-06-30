@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB61CFD324A9CB39004EF8C8 /* MainPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61CFD124A9CB39004EF8C8 /* MainPageTableViewCell.swift */; };
+		FB61CFD424A9CB39004EF8C8 /* MainPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB61CFD224A9CB39004EF8C8 /* MainPageTableViewCell.xib */; };
 		FBFC599124A447EC0050C94B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC599024A447EC0050C94B /* AppDelegate.swift */; };
 		FBFC599324A447EC0050C94B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC599224A447EC0050C94B /* SceneDelegate.swift */; };
 		FBFC599524A447EC0050C94B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC599424A447EC0050C94B /* ViewController.swift */; };
 		FBFC599824A447EC0050C94B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFC599624A447EC0050C94B /* Main.storyboard */; };
 		FBFC599A24A447ED0050C94B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBFC599924A447ED0050C94B /* Assets.xcassets */; };
 		FBFC599D24A447ED0050C94B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFC599B24A447ED0050C94B /* LaunchScreen.storyboard */; };
+		FBFC59A924A475670050C94B /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC59A824A475670050C94B /* AddAlarmViewController.swift */; };
+		FBFC59AE24A47B730050C94B /* EditingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC59AC24A47B730050C94B /* EditingTableViewController.swift */; };
+		FBFC59B324A47C0D0050C94B /* EditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC59B124A47C0D0050C94B /* EditingTableViewCell.swift */; };
+		FBFC59B424A47C0D0050C94B /* EditingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBFC59B224A47C0D0050C94B /* EditingTableViewCell.xib */; };
+		FBFC59B624A486510050C94B /* task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC59B524A486510050C94B /* task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB61CFD124A9CB39004EF8C8 /* MainPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageTableViewCell.swift; sourceTree = "<group>"; };
+		FB61CFD224A9CB39004EF8C8 /* MainPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPageTableViewCell.xib; sourceTree = "<group>"; };
 		FBFC598D24A447EC0050C94B /* alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFC599024A447EC0050C94B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBFC599224A447EC0050C94B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +33,11 @@
 		FBFC599924A447ED0050C94B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBFC599C24A447ED0050C94B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBFC599E24A447ED0050C94B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBFC59A824A475670050C94B /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
+		FBFC59AC24A47B730050C94B /* EditingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTableViewController.swift; sourceTree = "<group>"; };
+		FBFC59B124A47C0D0050C94B /* EditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTableViewCell.swift; sourceTree = "<group>"; };
+		FBFC59B224A47C0D0050C94B /* EditingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditingTableViewCell.xib; sourceTree = "<group>"; };
+		FBFC59B524A486510050C94B /* task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,9 +51,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */ = {
+			isa = PBXGroup;
+			children = (
+				FB61CFD124A9CB39004EF8C8 /* MainPageTableViewCell.swift */,
+				FB61CFD224A9CB39004EF8C8 /* MainPageTableViewCell.xib */,
+				FBFC599424A447EC0050C94B /* ViewController.swift */,
+			);
+			path = AlarmMainPage;
+			sourceTree = "<group>";
+		};
 		FBFC598424A447EC0050C94B = {
 			isa = PBXGroup;
 			children = (
+				FBFC59B524A486510050C94B /* task.swift */,
+				FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */,
 				FBFC598F24A447EC0050C94B /* alarm */,
 				FBFC598E24A447EC0050C94B /* Products */,
 			);
@@ -58,13 +84,32 @@
 			children = (
 				FBFC599024A447EC0050C94B /* AppDelegate.swift */,
 				FBFC599224A447EC0050C94B /* SceneDelegate.swift */,
-				FBFC599424A447EC0050C94B /* ViewController.swift */,
 				FBFC599624A447EC0050C94B /* Main.storyboard */,
+				FBFC59B024A47B780050C94B /* EditingTableView */,
+				FBFC59AB24A475BC0050C94B /* addAlarm */,
 				FBFC599924A447ED0050C94B /* Assets.xcassets */,
 				FBFC599B24A447ED0050C94B /* LaunchScreen.storyboard */,
 				FBFC599E24A447ED0050C94B /* Info.plist */,
 			);
 			path = alarm;
+			sourceTree = "<group>";
+		};
+		FBFC59AB24A475BC0050C94B /* addAlarm */ = {
+			isa = PBXGroup;
+			children = (
+				FBFC59A824A475670050C94B /* AddAlarmViewController.swift */,
+			);
+			path = addAlarm;
+			sourceTree = "<group>";
+		};
+		FBFC59B024A47B780050C94B /* EditingTableView */ = {
+			isa = PBXGroup;
+			children = (
+				FBFC59AC24A47B730050C94B /* EditingTableViewController.swift */,
+				FBFC59B124A47C0D0050C94B /* EditingTableViewCell.swift */,
+				FBFC59B224A47C0D0050C94B /* EditingTableViewCell.xib */,
+			);
+			path = EditingTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +171,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBFC599D24A447ED0050C94B /* LaunchScreen.storyboard in Resources */,
+				FB61CFD424A9CB39004EF8C8 /* MainPageTableViewCell.xib in Resources */,
+				FBFC59B424A47C0D0050C94B /* EditingTableViewCell.xib in Resources */,
 				FBFC599A24A447ED0050C94B /* Assets.xcassets in Resources */,
 				FBFC599824A447EC0050C94B /* Main.storyboard in Resources */,
 			);
@@ -138,9 +185,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBFC59B624A486510050C94B /* task.swift in Sources */,
 				FBFC599524A447EC0050C94B /* ViewController.swift in Sources */,
+				FBFC59AE24A47B730050C94B /* EditingTableViewController.swift in Sources */,
+				FB61CFD324A9CB39004EF8C8 /* MainPageTableViewCell.swift in Sources */,
+				FBFC59A924A475670050C94B /* AddAlarmViewController.swift in Sources */,
 				FBFC599124A447EC0050C94B /* AppDelegate.swift in Sources */,
 				FBFC599324A447EC0050C94B /* SceneDelegate.swift in Sources */,
+				FBFC59B324A47C0D0050C94B /* EditingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
