@@ -9,22 +9,34 @@
 import UIKit
 
 class LabelViewController: UIViewController {
-
+    var label: String?
+    @IBOutlet weak var myTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if  label != nil {
+            self.myTextField.text = label
+        }else {
+            myTextField.text = ""
+        }
+        myTextField.becomeFirstResponder()
+        myTextField.enablesReturnKeyAutomatically = true
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    @IBAction func unwind(for segue:UIStoryboardSegue) {
+//        if segue.identifier == "labelPageSegue"{
+//            let vc = segue.source as! AddAlarmViewController
+//            vc.alarmLabel = myTextField.text ?? ""
+    
+    
+//        }
+//    }
+    
+//    @objc func printHello() {
+//        print("Hello")
+//    }
 
 }

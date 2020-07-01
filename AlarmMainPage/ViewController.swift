@@ -34,7 +34,8 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "addAlarm") {
-                let editVC = segue.destination as! AddAlarmViewController
+            let dist = segue.destination as! UINavigationController
+            let editVC = dist.topViewController as! AddAlarmViewController
                 editVC.delegate = self
         }
     }

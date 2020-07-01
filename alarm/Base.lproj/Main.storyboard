@@ -10,7 +10,7 @@
         <!--鬧鐘-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainPage" id="BYZ-38-t0r" customClass="ViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +42,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mzz-kc-hnq">
                             <connections>
                                 <action selector="newButton:" destination="BYZ-38-t0r" id="rih-9N-Tfc"/>
-                                <segue destination="UhA-rt-2X6" kind="popoverPresentation" identifier="addAlarm" popoverAnchorBarButtonItem="mzz-kc-hnq" id="Ikt-9C-9re">
+                                <segue destination="vnQ-FW-9aX" kind="popoverPresentation" identifier="addAlarm" popoverAnchorBarButtonItem="mzz-kc-hnq" id="Ikt-9C-9re">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -56,65 +56,90 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--Add Alarm View Controller-->
+        <!--加入鬧鐘-->
         <scene sceneID="1JO-1g-k4b">
             <objects>
-                <viewController storyboardIdentifier="AddAlarmVC" id="UhA-rt-2X6" customClass="AddAlarmViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondPage" id="UhA-rt-2X6" customClass="AddAlarmViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MAR-1U-98U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcP-hT-r4Y">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                                <items>
-                                    <navigationItem title="加入鬧鐘" id="jSG-pi-dM3">
-                                        <barButtonItem key="leftBarButtonItem" title="取消" id="hzi-xy-OVS">
-                                            <connections>
-                                                <action selector="cancelButton:" destination="UhA-rt-2X6" id="2IG-bJ-XUl"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="儲存" id="vlR-sE-azi">
-                                            <connections>
-                                                <action selector="clickSaveButton:" destination="UhA-rt-2X6" id="3LW-1Z-STh"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-Ck-2sT">
                                 <rect key="frame" x="0.0" y="56" width="414" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="timePick:" destination="UhA-rt-2X6" eventType="valueChanged" id="TZX-tF-6Bj"/>
+                                    <action selector="timePick:" destination="UhA-rt-2X6" eventType="valueChanged" id="Ib0-RU-Lnl"/>
                                 </connections>
                             </datePicker>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GbM-eL-SzW">
                                 <rect key="frame" x="0.0" y="226" width="414" height="309"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="YkJ-Xg-TcK" kind="embed" id="Fgk-dY-mIL"/>
+                                    <segue destination="YkJ-Xg-TcK" kind="embed" identifier="editTableView" id="Fgk-dY-mIL"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="kcP-hT-r4Y" firstAttribute="trailing" secondItem="TUa-bd-ovj" secondAttribute="trailing" id="HfG-dF-h0l"/>
-                            <constraint firstItem="kcP-hT-r4Y" firstAttribute="top" secondItem="TUa-bd-ovj" secondAttribute="top" id="TIa-OQ-IQQ"/>
-                            <constraint firstItem="kcP-hT-r4Y" firstAttribute="leading" secondItem="TUa-bd-ovj" secondAttribute="leading" id="kVX-ai-AJA"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TUa-bd-ovj"/>
                     </view>
+                    <navigationItem key="navigationItem" title="加入鬧鐘" id="wDO-of-4wA">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="2Kc-l9-M6I"/>
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="hzi-xy-OVS">
+                            <connections>
+                                <action selector="cancelButton:" destination="UhA-rt-2X6" id="2IG-bJ-XUl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="儲存" id="vlR-sE-azi">
+                            <connections>
+                                <action selector="clickSaveButton:" destination="UhA-rt-2X6" id="3LW-1Z-STh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="myContainView" destination="GbM-eL-SzW" id="ysD-NP-z3W"/>
                         <outlet property="myTimePicker" destination="0MN-Ck-2sT" id="Pse-ji-7F5"/>
-                        <segue destination="ft7-if-EeW" kind="popoverPresentation" identifier="labelPageSegue" popoverAnchorView="GbM-eL-SzW" id="tzZ-Gi-ypL">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
+                        <segue destination="LDF-CW-D1h" kind="show" identifier="labelPageSegue" id="cED-wT-JpV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLK-cF-u7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931.8840579710147" y="137.94642857142856"/>
+            <point key="canvasLocation" x="2839.130434782609" y="137.94642857142856"/>
+        </scene>
+        <!--標籤-->
+        <scene sceneID="hyo-Xk-NUj">
+            <objects>
+                <viewController storyboardIdentifier="labelVC" id="LDF-CW-D1h" customClass="LabelViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Oam-Jl-5wR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ooV-WH-V8f">
+                                <rect key="frame" x="0.0" y="318" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="414" id="e7V-zX-gaI"/>
+                                    <constraint firstAttribute="height" constant="50" id="rdW-8j-fo3"/>
+                                    <constraint firstAttribute="width" constant="414" id="z6U-Xe-k15"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="g4B-dL-phG" firstAttribute="bottom" secondItem="ooV-WH-V8f" secondAttribute="bottom" constant="440" id="3b9-VM-ddG"/>
+                            <constraint firstItem="ooV-WH-V8f" firstAttribute="leading" secondItem="g4B-dL-phG" secondAttribute="leading" id="3qn-fP-Ifw"/>
+                            <constraint firstItem="g4B-dL-phG" firstAttribute="trailing" secondItem="ooV-WH-V8f" secondAttribute="trailing" id="fDS-Rr-7zN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g4B-dL-phG"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="標籤" id="fJK-AV-YaX"/>
+                    <connections>
+                        <outlet property="myTextField" destination="ooV-WH-V8f" id="eyb-nl-Pfe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s1W-5A-2GH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3691" y="138"/>
         </scene>
         <!--Editing Table View Controller-->
         <scene sceneID="eA8-ZY-gHL">
@@ -314,23 +339,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsZ-zU-Xse" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1933" y="-338"/>
-        </scene>
-        <!--Label View Controller-->
-        <scene sceneID="hyo-bh-5iX">
-            <objects>
-                <viewController storyboardIdentifier="LabelVC" id="ft7-if-EeW" customClass="LabelViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aNJ-Pd-8cc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="csK-4g-Hvb"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="KAu-se-TK9"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tpz-dN-s2W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2949" y="-226"/>
+            <point key="canvasLocation" x="2822" y="-340"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yhg-7n-HAV">
@@ -349,6 +358,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qms-Zc-pQx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gLT-dq-Gk0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vnQ-FW-9aX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sv7-VO-qOF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UhA-rt-2X6" kind="relationship" relationship="rootViewController" id="Du0-of-hsc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dh9-nx-q15" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1928.985507246377" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>

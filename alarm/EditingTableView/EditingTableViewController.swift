@@ -9,7 +9,9 @@
 import UIKit
 
 class EditingTableViewController: UITableViewController {
-        
+    var delegate:CellPressedDelegate?
+    
+    
     @IBOutlet weak var editingTableView: UITableView!
     
     @IBOutlet weak var repeatLabel: UILabel!
@@ -49,15 +51,30 @@ class EditingTableViewController: UITableViewController {
         
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 1:
-//            performSegue(withIdentifier: "labelPageSegue", sender: nil)
-            UIStoryboard(name: "EditingTableVC", bundle: nil).instantiateViewController(withIdentifier: "LabelVC")
-            break;
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                break;
+            case 1:
+                let vc = storyboard?.instantiateViewController(withIdentifier: "labelVC")
+                show(vc!, sender: self)
+                
+
+    //          delegate?.goNextPage(destination:"labelPageSegue")
+    //          delegate?.goNextPage(destination: "labelVC")
+                
+                
+            default:
+                break
+            }
+
         default:
-            break;
+            break
         }
-    }
 
     
+}
+
+
 }

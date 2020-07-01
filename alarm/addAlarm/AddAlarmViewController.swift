@@ -10,8 +10,9 @@ import UIKit
 
 class AddAlarmViewController: UIViewController {
 
-    @IBOutlet weak var myTimePicker: UIDatePicker!
+    @IBOutlet weak var myTimePicker: UIDatePicker! 
     @IBOutlet weak var myContainView: UIView!
+
     
     var delegate: timeSet?
     var task: Task?
@@ -20,10 +21,14 @@ class AddAlarmViewController: UIViewController {
     var alarmLabel:String = "鬧鐘"
 //    var repeatDate:String?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        pickTime()
         
     }
+    
 
     @IBAction func timePick(_ sender: UIDatePicker) {
         pickTime()
@@ -34,21 +39,8 @@ class AddAlarmViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-//    @IBAction func saveButton(_ sender: UIBarButtonItem, time:Strin) {
-//
-//        delegate?.timeSetting(value: okTime)
-//        self.dismiss(animated: true, completion: nil)
-//    }
-    
     @IBAction func clickSaveButton(_ sender: UIBarButtonItem) {
-        if let okTime = okTime {
             delegate?.timeSetting(time: okTime, label: alarmLabel)
-        }else {
-            pickTime()
-            delegate?.timeSetting(time: okTime, label: alarmLabel)
-        }
-        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -57,7 +49,11 @@ class AddAlarmViewController: UIViewController {
     func pickTime() {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
+        
+//        formatter.amSymbol = "上午"
         formatter.timeStyle = .short
+        
+        myTimePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale //24小時制
         
         
         let okTime = formatter.string(from:myTimePicker.date)
@@ -66,6 +62,31 @@ class AddAlarmViewController: UIViewController {
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if (segue.identifier == "editTableView") {
+            let editTableView = segue.destination as! EditingTableViewController
+            editTableView.delegate = self
+         }else if (segue.identifier == "labelPageSegue") {
+            let labelVC = segue.destination as! LabelViewController
+            labelVC.label = alarmLabel
+        }
+}
+    
 }
 
+protocol CellPressedDelegate {
+    func goNextPage(destination:String)
+}
 
+extension AddAlarmViewController: CellPressedDelegate{
+    func goNextPage(destination:String) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: destination)
+        show(vc!, sender: self)
+//        if destination == "labelPageSegue"{
+//        performSegue(withIdentifier: destination, sender: nil)
+        
+            
+//        }
+    }
+    
+}
