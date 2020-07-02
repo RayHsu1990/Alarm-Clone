@@ -63,22 +63,13 @@
 			path = AlarmMainPage;
 			sourceTree = "<group>";
 		};
-		FBD4624324ACD47A00FFBD1B /* MyAlarm */ = {
-			isa = PBXGroup;
-			children = (
-				FBFC59B524A486510050C94B /* task.swift */,
-				FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */,
-				FBFC598F24A447EC0050C94B /* alarm */,
-				FBFC599624A447EC0050C94B /* Main.storyboard */,
-				FBFC599B24A447ED0050C94B /* LaunchScreen.storyboard */,
-			);
-			path = MyAlarm;
-			sourceTree = "<group>";
-		};
 		FBFC598424A447EC0050C94B = {
 			isa = PBXGroup;
 			children = (
-				FBD4624324ACD47A00FFBD1B /* MyAlarm */,
+				FBFC59B524A486510050C94B /* task.swift */,
+				FBFC598F24A447EC0050C94B /* alarm */,
+				FBFC599624A447EC0050C94B /* Main.storyboard */,
+				FBFC599B24A447ED0050C94B /* LaunchScreen.storyboard */,
 				FBFC598E24A447EC0050C94B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +85,7 @@
 		FBFC598F24A447EC0050C94B /* alarm */ = {
 			isa = PBXGroup;
 			children = (
+				FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */,
 				FBFC599024A447EC0050C94B /* AppDelegate.swift */,
 				FBFC599224A447EC0050C94B /* SceneDelegate.swift */,
 				FB2BC84C24AAED9B00947588 /* LabelViewController.swift */,

@@ -11,9 +11,16 @@ import UIKit
 class EditingTableViewController: UITableViewController {
     var delegate:CellPressedDelegate?
     
+    var label: String?
+//    var computedLabel:String {
+//        get {
+//            return label ?? ""
+//        } set {
+//            self.alarmName.text = newValue
+//        }
+//    }
     
     @IBOutlet weak var editingTableView: UITableView!
-    
     @IBOutlet weak var repeatLabel: UILabel!
     @IBOutlet weak var alarmName: UILabel!
     @IBOutlet weak var toneLabel: UILabel!
@@ -22,14 +29,7 @@ class EditingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        alarmName.text = label
     }
 
     // MARK: - Table view data source
@@ -45,11 +45,9 @@ class EditingTableViewController: UITableViewController {
             return 4
         }else {
             return 1
-            
-            
         }
-        
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
@@ -57,24 +55,19 @@ class EditingTableViewController: UITableViewController {
             case 0:
                 break;
             case 1:
-                let vc = storyboard?.instantiateViewController(withIdentifier: "labelVC")
-                show(vc!, sender: self)
-                
-
+//                let vc = storyboard?.instantiateViewController(withIdentifier: "labelVC")
+//                show(vc!, sender: self)
     //          delegate?.goNextPage(destination:"labelPageSegue")
-    //          delegate?.goNextPage(destination: "labelVC")
-                
-                
+              delegate?.goNextPage(destination: "labelPageSegue")
             default:
                 break
             }
-
         default:
             break
         }
-
-    
-}
-
+    }
 
 }
+
+
+

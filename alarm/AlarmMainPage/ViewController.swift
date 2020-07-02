@@ -74,7 +74,7 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension ViewController : timeSet {
+extension ViewController : TimeSet {
     func timeSetting(time: String?, label: String?) {
         if let time = time, let label = label{
             let newAlarm = Task(title: time, subTitle: label, isOn: true)
