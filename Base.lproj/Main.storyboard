@@ -99,11 +99,42 @@
                         <outlet property="myContainView" destination="GbM-eL-SzW" id="ysD-NP-z3W"/>
                         <outlet property="myTimePicker" destination="0MN-Ck-2sT" id="Pse-ji-7F5"/>
                         <segue destination="LDF-CW-D1h" kind="show" identifier="labelPageSegue" id="cED-wT-JpV"/>
+                        <segue destination="6ek-TM-ixb" kind="show" identifier="repeatDayPageSegue" id="Ocx-C6-NkH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLK-cF-u7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2839.130434782609" y="137.94642857142856"/>
+        </scene>
+        <!--重複-->
+        <scene sceneID="WZh-qZ-ozY">
+            <objects>
+                <tableViewController storyboardIdentifier="repeatDayVC" id="6ek-TM-ixb" customClass="RepeatDayTableViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KhV-s2-eTU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="hS4-Ru-uPt">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hS4-Ru-uPt" id="32O-3S-Kci">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="6ek-TM-ixb" id="Mr5-Re-Wmq"/>
+                            <outlet property="delegate" destination="6ek-TM-ixb" id="GZp-JO-0sx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="重複" id="sNl-77-cpJ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P2h-Ew-RBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3942" y="-589"/>
         </scene>
         <!--標籤-->
         <scene sceneID="hyo-Xk-NUj">
@@ -139,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1W-5A-2GH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3691" y="138"/>
+            <point key="canvasLocation" x="3943" y="138"/>
         </scene>
         <!--Editing Table View Controller-->
         <scene sceneID="eA8-ZY-gHL">
@@ -159,7 +190,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="永不" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfQ-ix-VLl">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfQ-ix-VLl">
                                                     <rect key="frame" x="313" y="14.5" width="60" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="V0O-J6-QeY"/>

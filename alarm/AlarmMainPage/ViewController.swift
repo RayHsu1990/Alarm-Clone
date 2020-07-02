@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var alarmList = [Task]()
+    var alarmList = [AlarmModel]()
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -74,10 +74,10 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension ViewController : TimeSet {
+extension ViewController : AlarmSetDelegate {
     func timeSetting(time: String?, label: String?) {
         if let time = time, let label = label{
-            let newAlarm = Task(title: time, subTitle: label, isOn: true)
+            let newAlarm = AlarmModel(title: time, subTitle: label, isOn: true)
             alarmList.append(newAlarm)
             let newTex = IndexPath(row: self.alarmList.count - 1, section: 0)
             self.myTableView.insertRows(at: [newTex], with: .automatic)

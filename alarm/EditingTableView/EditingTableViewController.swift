@@ -53,11 +53,8 @@ class EditingTableViewController: UITableViewController {
         case 0:
             switch indexPath.row {
             case 0:
-                break;
+                delegate?.goNextPage(destination:"repeatDayPageSegue")
             case 1:
-//                let vc = storyboard?.instantiateViewController(withIdentifier: "labelVC")
-//                show(vc!, sender: self)
-    //          delegate?.goNextPage(destination:"labelPageSegue")
               delegate?.goNextPage(destination: "labelPageSegue")
             default:
                 break

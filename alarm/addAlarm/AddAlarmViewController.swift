@@ -13,9 +13,9 @@ class AddAlarmViewController: UIViewController {
     @IBOutlet weak var myTimePicker: UIDatePicker! 
     @IBOutlet weak var myContainView: UIView!
 
-    var editVC = EditingTableViewController()
-    var delegate: TimeSet?
-    var task: Task?
+    var editVC: EditingTableViewController!
+    var delegate: AlarmSetDelegate?
+    var task: AlarmModel?
     var okTime:String?
     var index: Int?
     var alarmLabel:String = "鬧鐘"
@@ -66,43 +66,39 @@ class AddAlarmViewController: UIViewController {
             self.editVC = editVC
             editVC.delegate = self
             editVC.label = alarmLabel
-            
-//            if editVC.alarmName.text != nil {
-//                editVC.alarmName.text = alarmLabel
-//            }
-            
- 
-            
-            
+    
          }else if (segue.identifier == "labelPageSegue") {
             let labelVC = segue.destination as! LabelViewController
             labelVC.label = alarmLabel
             labelVC.delegate = self
+         }else if (segue.identifier == "repeatDayPageSegue") {
+            let repeatVC = segue.destination as! RepeatDayTableViewController
+            
         }
     }
     
     
 }
 
-protocol CellPressedDelegate {
-    func goNextPage(destination:String)
-}
+
 
 extension AddAlarmViewController: CellPressedDelegate{
     func goNextPage(destination:String) {
-        if destination == "labelPageSegue"{
         performSegue(withIdentifier: destination, sender: nil)
             //            let vc = storyboard?.instantiateViewController(withIdentifier: destination)
             //            show(vc!, sender: self)
-        }
     }
-    
 }
-extension AddAlarmViewController: LabelSet {
+
+extension AddAlarmViewController: LabelSetDelegate {
     func labelSet(label: String) {
         alarmLabel = label
         self.editVC.alarmName.text = alarmLabel
-        print(alarmLabel)
+    }
+}
+
+extension AddAlarmViewController: RepeatDaysSetDelegate {
+    func repeatDaysSet(dayOfWeek: String) {
         
     }
     

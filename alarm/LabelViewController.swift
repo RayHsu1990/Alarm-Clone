@@ -11,7 +11,7 @@ import UIKit
 class LabelViewController: UIViewController {
     
     var label: String?
-    var delegate: LabelSet?
+    var delegate: LabelSetDelegate?
     
     @IBOutlet weak var myTextField: UITextField!
     
