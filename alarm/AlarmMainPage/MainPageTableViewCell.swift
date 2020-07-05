@@ -11,7 +11,9 @@ import UIKit
 class MainPageTableViewCell: UITableViewCell {
 
 
-    @IBOutlet weak var onSwitch: UISwitch!
+    
+    @IBOutlet weak var myTitle: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

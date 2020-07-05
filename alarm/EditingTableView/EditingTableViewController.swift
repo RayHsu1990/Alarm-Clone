@@ -9,22 +9,15 @@
 import UIKit
 
 class EditingTableViewController: UITableViewController {
-    var delegate:CellPressedDelegate?
     
+    var delegate:CellPressedDelegate?
     var label: String?
-//    var computedLabel:String {
-//        get {
-//            return label ?? ""
-//        } set {
-//            self.alarmName.text = newValue
-//        }
-//    }
+    var mode = EditMode.Add
     
     @IBOutlet weak var editingTableView: UITableView!
     @IBOutlet weak var repeatLabel: UILabel!
     @IBOutlet weak var alarmName: UILabel!
     @IBOutlet weak var toneLabel: UILabel!
-    
     @IBOutlet weak var reminderSwitch: UISwitch!
     
     override func viewDidLoad() {
@@ -35,8 +28,11 @@ class EditingTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+        if mode == EditMode.Add {
+            return 1
+        }else{
+            return 2
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

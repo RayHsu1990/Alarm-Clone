@@ -19,14 +19,19 @@ class AddAlarmViewController: UIViewController {
     var okTime:String?
     var index: Int?
     var alarmLabel:String = "鬧鐘"
-//    var repeatDate:String?
-    
+    var repeatDate:String?
+    var mode = EditMode.Add
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let title = mode.title
+        navigationItem.title = title
         pickTime()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print(mode)
+    }
 
     @IBAction func timePick(_ sender: UIDatePicker) {
         pickTime()
@@ -62,10 +67,11 @@ class AddAlarmViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if (segue.identifier == "editTableVCSegue") {
-            let editVC = segue.destination as! EditingTableViewController
-            self.editVC = editVC
-            editVC.delegate = self
-            editVC.label = alarmLabel
+            let editTableView = segue.destination as! EditingTableViewController
+            self.editVC = editTableView
+            editTableView.delegate = self
+            editTableView.label = alarmLabel
+            editTableView.mode = mode
     
          }else if (segue.identifier == "labelPageSegue") {
             let labelVC = segue.destination as! LabelViewController

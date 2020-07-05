@@ -14,16 +14,17 @@ struct AlarmModel {
     var isOn: Bool
 
 }
+enum EditMode {
+    case Add, Edit
+    
+    var title:String{
+        switch self {
+        case .Add: return "加入鬧鐘"
+        case .Edit: return "編輯鬧鐘"
+        }
+    }
+}
 
-//enum Days:Int {
-//    case 星期日 = 0
-//    case 星期一 = 1
-//    case 星期二 = 2
-//    case 星期三 = 3
-//    case 星期四 = 4
-//    case 星期五 = 5
-//    case 星期六 = 6
-//}
     
 enum Days {
     case 星期日 , 星期一, 星期二, 星期三 ,星期四, 星期五, 星期六
