@@ -19,7 +19,7 @@ class AddAlarmViewController: UIViewController {
     var okTime:String?
     var index: Int?
     var alarmLabel:String = "鬧鐘"
-    var repeatDate:String?
+    var repeatDate:String = "永不"
     var mode = EditMode.Add
     
     override func viewDidLoad() {
@@ -30,7 +30,6 @@ class AddAlarmViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(mode)
     }
 
     @IBAction func timePick(_ sender: UIDatePicker) {
@@ -72,6 +71,7 @@ class AddAlarmViewController: UIViewController {
             editTableView.delegate = self
             editTableView.label = alarmLabel
             editTableView.mode = mode
+            editTableView.repeatDays = repeatDate
     
          }else if (segue.identifier == "labelPageSegue") {
             let labelVC = segue.destination as! LabelViewController
@@ -79,6 +79,7 @@ class AddAlarmViewController: UIViewController {
             labelVC.delegate = self
          }else if (segue.identifier == "repeatDayPageSegue") {
             let repeatVC = segue.destination as! RepeatDayTableViewController
+            
             
         }
     }

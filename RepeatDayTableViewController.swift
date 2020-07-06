@@ -11,13 +11,38 @@ import UIKit
 class RepeatDayTableViewController: UITableViewController {
     var delegate: RepeatDaysSetDelegate?
     
-    var dayOfWeek = ["星期日", "星期一", "星期二", "星期三","星期四", "星期五", "星期六"]
+    let dayOfWeek = ["星期日", "星期一", "星期二", "星期三","星期四", "星期五", "星期六"]
+    var secDayOfWeek = ["週日", "週一", "週二", "週三", "週四", "週五", "週六"]
     var isSlected = [Bool]()
-    
+    var repeatDays: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         isSlected = Array(repeating: false, count: dayOfWeek.count)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        var repeatString : String {
+            if isSlected == Array(repeating: true, count: 7) {
+                return "每天"
+            }else if isSlected == Array(repeating: false, count: 7) {
+                return "永不"
+            }else if isSlected == [true, false, false, false, false, false, true] {
+                return "週末"
+            }else if isSlected == [false, true, true, true, true, true, false] {
+                return "平日"
+            }else {
+                var repeatString = ""
+                for i in isSlected.enumerated() {
+                    if isSlected[i.offset]{
+                        repeatString = repeatString + " " + secDayOfWeek[i.offset]
+                    }
+                }
+                return repeatString
+            }
+        }
+        
+        print(repeatString)
     }
 
     // MARK: - Table view data source
@@ -43,10 +68,10 @@ class RepeatDayTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         isSlected[indexPath.row] = !isSlected[indexPath.row]
+        print(dayOfWeek[indexPath.row])
         tableView.reloadData()
     }
     
-
 
 
 

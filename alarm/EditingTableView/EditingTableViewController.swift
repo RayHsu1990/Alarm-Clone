@@ -12,6 +12,7 @@ class EditingTableViewController: UITableViewController {
     
     var delegate:CellPressedDelegate?
     var label: String?
+    var repeatDays: String?
     var mode = EditMode.Add
     
     @IBOutlet weak var editingTableView: UITableView!
@@ -23,6 +24,7 @@ class EditingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         alarmName.text = label
+        repeatLabel.text = repeatDays
     }
 
     // MARK: - Table view data source
