@@ -98,11 +98,9 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         editButton.title = "完成"
-        editButton.style = .done
     }
     func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         editButton.title = "編輯"
-        editButton.style = .plain
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if myTableView.isEditing  {
@@ -110,22 +108,25 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate {
             //
             savedAlarm = alarmList[indexPath.row]
             addVC.tempAlarm = savedAlarm
+            
+            addVC.path = indexPath.row
+            myTableView.isEditing = false
+            editButton.title = "編輯"
         }
     }
 }
 
 extension ViewController : AlarmSetDelegate {
-    func alarmSetting(time: String?, label: String?,  repeatDate:String?) {
-        if let time = time, let label = label, let repeatDate = repeatDate {
-            let newAlarm = AlarmModel(time: time, label: label, repeatdate: repeatDate, isOn: true)
-            alarmList.append(newAlarm)
-            let newTex = IndexPath(row: self.alarmList.count - 1, section: 0)
-            self.myTableView.insertRows(at: [newTex], with: .automatic)
-        }
-
-
-        
+    func valueChanged(array: AlarmModel?, index: Int) {
+        alarmList[index] = array!
+        myTableView.reloadData()
+        print(alarmList)
     }
     
-    
+    func alarmSetting(time: String?, label: String?,  repeatDate:String?, isOn: Bool ,array:[Bool]) {
+        let newAlarm = AlarmModel(time: time!, label: label, repeatdate: repeatDate, repeatArray: array, isOn: true)
+            alarmList.append(newAlarm)
+            let index = IndexPath(row: self.alarmList.count - 1, section: 0) //這個要改 順序不對
+            self.myTableView.insertRows(at: [index], with: .automatic)
+    }
 }

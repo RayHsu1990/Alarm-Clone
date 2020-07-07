@@ -12,6 +12,7 @@ struct AlarmModel {
     var time: String
     var label: String?
     var repeatdate: String?
+    var repeatArray: [Bool]
     var isOn: Bool = true
     var remindLater : Bool = false
     
@@ -36,7 +37,9 @@ enum Days {
 
 
 protocol AlarmSetDelegate {
-    func alarmSetting(time: String?, label: String?, repeatDate:String?)
+    func alarmSetting(time: String?, label: String?, repeatDate:String?, isOn: Bool ,array:[Bool])
+    
+    func valueChanged (array: AlarmModel?, index:Int )
 }
 protocol LabelSetDelegate {
     func labelSet (label:String)
@@ -44,10 +47,12 @@ protocol LabelSetDelegate {
 
 protocol CellPressedDelegate {
     func goNextPage(destination:String)
+    
+    func delete()
 }
 
 protocol RepeatDaysSetDelegate {
-    func repeatDaysSet(dayOfWeek:String)
+    func repeatDaysSet(dayOfWeek:String, array:[Bool])
 }
 
 

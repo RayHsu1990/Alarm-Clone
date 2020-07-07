@@ -11,8 +11,7 @@ import UIKit
 class EditingTableViewController: UITableViewController {
     
     var delegate:CellPressedDelegate?
-    var label: String?
-    var repeatDays: String?
+    var addVC : AddAlarmViewController!
     var mode = EditMode.Add
     
     @IBOutlet weak var editingTableView: UITableView!
@@ -55,6 +54,8 @@ class EditingTableViewController: UITableViewController {
             default:
                 break
             }
+        case 1:
+            delegate?.delete()
         default:
             break
         }

@@ -9,14 +9,19 @@
 import UIKit
 
 class AddAlarmViewController: UIViewController {
-    
+    var alarmVC: ViewController!
     var editTVC: EditingTableViewController!
+//    var repeatTVC: RepeatDayTableViewController!
+//    var labelVC: LabelViewController!
     var delegate: AlarmSetDelegate?
     var tempAlarm: AlarmModel?
+    var changedAlarm: AlarmModel?
+    var array : [Bool]!
     var okTime:String?
     var alarmLabel:String = "鬧鐘"
     var repeatDate:String = "永不"
     var mode = EditMode.Add
+    var path: Int?
     
     @IBOutlet weak var myTimePicker: UIDatePicker! 
     @IBOutlet weak var myContainView: UIView!
@@ -25,6 +30,7 @@ class AddAlarmViewController: UIViewController {
     
     // MARK: - Life
     override func viewDidLoad() {
+        print(path)
         super.viewDidLoad()
         navigationItem.title = mode.title
 //        print(mode)
@@ -37,9 +43,8 @@ class AddAlarmViewController: UIViewController {
             editTVC.alarmName.text = tempAlarm?.label
             editTVC.repeatLabel.text = tempAlarm?.repeatdate!
             editTVC.mode = .Edit
-            guard let alarmLabel = tempAlarm?.label else {
-                return
-            }
+//            alarmLabel = tempAlarm?.label ?? ""
+//            repeatDate = tempAlarm?.repeatdate ?? "永不"
             //要把時間套上
         }
         pickTime()
@@ -58,11 +63,19 @@ class AddAlarmViewController: UIViewController {
     }
     // MARK: 按下儲存鍵
     @IBAction func clickSaveButton(_ sender: UIBarButtonItem) {
+        if array == nil {
+            array = Array(repeating: false, count: 7)
+        }
         switch mode {
         case .Add:
-        delegate?.alarmSetting(time: okTime, label: alarmLabel, repeatDate:repeatDate)
+
+        delegate?.alarmSetting(time: okTime, label: alarmLabel, repeatDate:repeatDate, isOn: true ,array:array)
         case .Edit:
-            delegate?.alarmSetting(time: tempAlarm?.time, label: tempAlarm?.label, repeatDate:tempAlarm?.repeatdate)
+            tempAlarm?.time = okTime!
+            tempAlarm?.label = alarmLabel
+            tempAlarm?.repeatdate = repeatDate
+            tempAlarm?.repeatArray = array
+            delegate?.valueChanged(array: tempAlarm, index: path!)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -80,35 +93,48 @@ class AddAlarmViewController: UIViewController {
     }
     //MARK: prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if (segue.identifier == "editTableVCSegue") {
+        switch segue.identifier {
+        case "editTableVCSegue":
             let editTableView = segue.destination as! EditingTableViewController
-            self.editTVC = editTableView
-            editTVC.delegate = self
-         }else if
-            (segue.identifier == "labelPageSegue") {
+                self.editTVC = editTableView
+                editTVC.delegate = self
+        case "labelPageSegue":
             let labelVC = segue.destination as! LabelViewController
             labelVC.delegate = self
-            switch mode {
-            case .Add:
-                labelVC.label = alarmLabel
-            case .Edit:
-                labelVC.label = tempAlarm?.label
-            }
-         }else if
-            (segue.identifier == "repeatDayPageSegue") {
+                switch mode {
+                    case .Add:
+                    labelVC.label = alarmLabel
+                    case .Edit:
+                    labelVC.label = tempAlarm?.label
+                }
+        case "repeatDayPageSegue":
             let repeatVC = segue.destination as! RepeatDayTableViewController
             repeatVC.delegate = self
+            switch mode {
+                case .Add:
+                repeatVC.mode = .Add
+                case .Edit:
+                repeatVC.mode = .Edit
+                repeatVC.selected = tempAlarm?.repeatArray as! [Bool]
+            }
             
+        default:
+            break
         }
     }
 }
 //MARK: - Protocol
 
 extension AddAlarmViewController: CellPressedDelegate{
+    func delete() {
+        if let path = path {
+            alarmVC.alarmList.remove(at: path)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
     func goNextPage(destination:String) {
         performSegue(withIdentifier: destination, sender: nil)
-//    let vc = storyboard?.instantiateViewController(withIdentifier: destination)
-//    show(vc!, sender: self)
     }
 }
 
@@ -120,8 +146,9 @@ extension AddAlarmViewController: LabelSetDelegate {
 }
 
 extension AddAlarmViewController: RepeatDaysSetDelegate {
-    func repeatDaysSet(dayOfWeek: String) {
+    func repeatDaysSet(dayOfWeek: String, array: [Bool]) {
         repeatDate = dayOfWeek
+        self.array = array
         self.editTVC.repeatLabel.text = repeatDate
     }
 }

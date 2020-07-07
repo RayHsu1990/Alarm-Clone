@@ -114,22 +114,22 @@
 				FBFC599E24A447ED0050C94B /* Info.plist */,
 				FBFC599024A447EC0050C94B /* AppDelegate.swift */,
 				FBFC599224A447EC0050C94B /* SceneDelegate.swift */,
-				FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */,
-				FBFC59AB24A475BC0050C94B /* addAlarm */,
-				FBFC59B024A47B780050C94B /* EditingTableView */,
 				FB567F8B24B4A5E200F76373 /* Model */,
+				FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */,
+				FBFC59AB24A475BC0050C94B /* AddAlarm */,
+				FBFC59B024A47B780050C94B /* EditingTableView */,
 				FB567F8D24B4A7A000F76373 /* RepeatPage */,
 				FB567F8E24B4A7C600F76373 /* LabelPage */,
 			);
 			path = alarm;
 			sourceTree = "<group>";
 		};
-		FBFC59AB24A475BC0050C94B /* addAlarm */ = {
+		FBFC59AB24A475BC0050C94B /* AddAlarm */ = {
 			isa = PBXGroup;
 			children = (
 				FBFC59A824A475670050C94B /* AddAlarmViewController.swift */,
 			);
-			path = addAlarm;
+			path = AddAlarm;
 			sourceTree = "<group>";
 		};
 		FBFC59B024A47B780050C94B /* EditingTableView */ = {

@@ -13,35 +13,42 @@ class RepeatDayTableViewController: UITableViewController {
     
     let dayOfWeek = ["星期日", "星期一", "星期二", "星期三","星期四", "星期五", "星期六"]
     var secDayOfWeek = ["週日", "週一", "週二", "週三", "週四", "週五", "週六"]
-    var isSlected = [Bool]()
+    var selected = [Bool]()
+    var isSelected = [Bool]()
     var repeatDays: String!
+    var mode = EditMode.Add
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        isSlected = Array(repeating: false, count: dayOfWeek.count)
+        switch mode {
+        case .Add:
+            isSelected = Array(repeating: false, count: dayOfWeek.count)
+        case .Edit:
+            isSelected = selected
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         var repeatString : String {
-            if isSlected == Array(repeating: true, count: 7) {
+            if isSelected == Array(repeating: true, count: 7) {
                 return "每天"
-            }else if isSlected == Array(repeating: false, count: 7) {
+            }else if isSelected == Array(repeating: false, count: 7) {
                 return "永不"
-            }else if isSlected == [true, false, false, false, false, false, true] {
+            }else if isSelected == [true, false, false, false, false, false, true] {
                 return "週末"
-            }else if isSlected == [false, true, true, true, true, true, false] {
+            }else if isSelected == [false, true, true, true, true, true, false] {
                 return "平日"
             }else {
                 var repeatString = ""
-                for i in isSlected.enumerated() {
-                    if isSlected[i.offset]{
+                for i in isSelected.enumerated() {
+                    if isSelected[i.offset]{
                         repeatString = repeatString + " " + secDayOfWeek[i.offset]
                     }
                 }
                 return repeatString
             }
         }
-        delegate?.repeatDaysSet(dayOfWeek: repeatString)
+        delegate?.repeatDaysSet(dayOfWeek: repeatString, array: isSelected)
         print(repeatString)
     }
 
@@ -58,7 +65,7 @@ class RepeatDayTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = dayOfWeek[indexPath.row]
-        if isSlected[indexPath.row] {
+        if isSelected[indexPath.row] {
             cell.accessoryType = .checkmark
         }else {
             cell.accessoryType = .none
@@ -67,7 +74,7 @@ class RepeatDayTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        isSlected[indexPath.row] = !isSlected[indexPath.row]
+        isSelected[indexPath.row] = !isSelected[indexPath.row]
         print(dayOfWeek[indexPath.row])
         tableView.reloadData()
     }
