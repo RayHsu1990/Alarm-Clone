@@ -9,105 +9,119 @@
 import UIKit
 
 class AddAlarmViewController: UIViewController {
-
-    @IBOutlet weak var myTimePicker: UIDatePicker! 
-    @IBOutlet weak var myContainView: UIView!
-
-    var editVC: EditingTableViewController!
+    
+    var editTVC: EditingTableViewController!
     var delegate: AlarmSetDelegate?
-    var task: AlarmModel?
+    var tempAlarm: AlarmModel?
     var okTime:String?
-    var index: Int?
     var alarmLabel:String = "鬧鐘"
     var repeatDate:String = "永不"
     var mode = EditMode.Add
     
+    @IBOutlet weak var myTimePicker: UIDatePicker! 
+    @IBOutlet weak var myContainView: UIView!
+
+
+    
+    // MARK: - Life
     override func viewDidLoad() {
         super.viewDidLoad()
-        let title = mode.title
-        navigationItem.title = title
+        navigationItem.title = mode.title
+//        print(mode)
+        switch mode {
+        case .Add:
+            editTVC.alarmName.text = "鬧鐘"
+            editTVC.repeatLabel.text = "永不"
+            editTVC.mode = .Add
+        case .Edit:
+            editTVC.alarmName.text = tempAlarm?.label
+            editTVC.repeatLabel.text = tempAlarm?.repeatdate!
+            editTVC.mode = .Edit
+            guard let alarmLabel = tempAlarm?.label else {
+                return
+            }
+            //要把時間套上
+        }
         pickTime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
     }
 
+    //MARK: - IBAction
+    
     @IBAction func timePick(_ sender: UIDatePicker) {
         pickTime()
     }
-    
-    
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+    // MARK: 按下儲存鍵
     @IBAction func clickSaveButton(_ sender: UIBarButtonItem) {
-            delegate?.timeSetting(time: okTime, label: alarmLabel)
+        switch mode {
+        case .Add:
+        delegate?.alarmSetting(time: okTime, label: alarmLabel, repeatDate:repeatDate)
+        case .Edit:
+            delegate?.alarmSetting(time: tempAlarm?.time, label: tempAlarm?.label, repeatDate:tempAlarm?.repeatdate)
+        }
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
+    //MARK: - Func
     func pickTime() {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        
-//        formatter.amSymbol = "上午"
+        formatter.dateFormat = "hh:mm"
         formatter.timeStyle = .short
-        
-        myTimePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale //24小時制
-        
-        
-        let okTime = formatter.string(from:myTimePicker.date)
-        self.okTime = okTime
-        print(okTime)
-
+//        formatter.amSymbol = "上午"
+//        myTimePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale //24小時制
+        self.okTime = formatter.string(from:myTimePicker.date)
+//        if let okTime = formatter.date(from: okTime ?? ""){
+//            myTimePicker.setDate(okTime, animated: true)
+//        }
     }
-    
+    //MARK: prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if (segue.identifier == "editTableVCSegue") {
             let editTableView = segue.destination as! EditingTableViewController
-            self.editVC = editTableView
-            editTableView.delegate = self
-            editTableView.label = alarmLabel
-            editTableView.mode = mode
-            editTableView.repeatDays = repeatDate
-    
-         }else if (segue.identifier == "labelPageSegue") {
+            self.editTVC = editTableView
+            editTVC.delegate = self
+         }else if
+            (segue.identifier == "labelPageSegue") {
             let labelVC = segue.destination as! LabelViewController
-            labelVC.label = alarmLabel
             labelVC.delegate = self
-         }else if (segue.identifier == "repeatDayPageSegue") {
+            switch mode {
+            case .Add:
+                labelVC.label = alarmLabel
+            case .Edit:
+                labelVC.label = tempAlarm?.label
+            }
+         }else if
+            (segue.identifier == "repeatDayPageSegue") {
             let repeatVC = segue.destination as! RepeatDayTableViewController
-            
+            repeatVC.delegate = self
             
         }
     }
-    
-    
 }
-
-
+//MARK: - Protocol
 
 extension AddAlarmViewController: CellPressedDelegate{
     func goNextPage(destination:String) {
         performSegue(withIdentifier: destination, sender: nil)
-            //            let vc = storyboard?.instantiateViewController(withIdentifier: destination)
-            //            show(vc!, sender: self)
+//    let vc = storyboard?.instantiateViewController(withIdentifier: destination)
+//    show(vc!, sender: self)
     }
 }
 
 extension AddAlarmViewController: LabelSetDelegate {
     func labelSet(label: String) {
         alarmLabel = label
-        self.editVC.alarmName.text = alarmLabel
+        self.editTVC.alarmName.text = alarmLabel
     }
 }
 
 extension AddAlarmViewController: RepeatDaysSetDelegate {
     func repeatDaysSet(dayOfWeek: String) {
-        
+        repeatDate = dayOfWeek
+        self.editTVC.repeatLabel.text = repeatDate
     }
-    
-    
 }

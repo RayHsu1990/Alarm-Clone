@@ -9,11 +9,14 @@
 import Foundation
 
 struct AlarmModel {
-    var title:String
-    var subTitle:String?
-    var isOn: Bool
-
+    var time: String
+    var label: String?
+    var repeatdate: String?
+    var isOn: Bool = true
+    var remindLater : Bool = false
+    
 }
+
 enum EditMode {
     case Add, Edit
     
@@ -23,6 +26,7 @@ enum EditMode {
         case .Edit: return "編輯鬧鐘"
         }
     }
+    
 }
 
     
@@ -32,7 +36,7 @@ enum Days {
 
 
 protocol AlarmSetDelegate {
-    func timeSetting(time: String?, label: String?)
+    func alarmSetting(time: String?, label: String?, repeatDate:String?)
 }
 protocol LabelSetDelegate {
     func labelSet (label:String)
@@ -45,3 +49,5 @@ protocol CellPressedDelegate {
 protocol RepeatDaysSetDelegate {
     func repeatDaysSet(dayOfWeek:String)
 }
+
+

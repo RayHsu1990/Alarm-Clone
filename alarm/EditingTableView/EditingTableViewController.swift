@@ -23,8 +23,6 @@ class EditingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        alarmName.text = label
-        repeatLabel.text = repeatDays
     }
 
     // MARK: - Table view data source

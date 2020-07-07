@@ -41,7 +41,7 @@ class RepeatDayTableViewController: UITableViewController {
                 return repeatString
             }
         }
-        
+        delegate?.repeatDaysSet(dayOfWeek: repeatString)
         print(repeatString)
     }
 

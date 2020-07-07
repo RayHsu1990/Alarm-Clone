@@ -55,6 +55,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB567F8B24B4A5E200F76373 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FBFC59B524A486510050C94B /* modelAndProtocol.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FB567F8D24B4A7A000F76373 /* RepeatPage */ = {
+			isa = PBXGroup;
+			children = (
+				FBD4624424ADB05300FFBD1B /* RepeatDayTableViewController.swift */,
+			);
+			path = RepeatPage;
+			sourceTree = "<group>";
+		};
+		FB567F8E24B4A7C600F76373 /* LabelPage */ = {
+			isa = PBXGroup;
+			children = (
+				FB2BC84C24AAED9B00947588 /* LabelViewController.swift */,
+			);
+			path = LabelPage;
+			sourceTree = "<group>";
+		};
 		FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,11 +92,7 @@
 		FBFC598424A447EC0050C94B = {
 			isa = PBXGroup;
 			children = (
-				FBFC59B524A486510050C94B /* modelAndProtocol.swift */,
-				FBD4624424ADB05300FFBD1B /* RepeatDayTableViewController.swift */,
 				FBFC598F24A447EC0050C94B /* alarm */,
-				FBFC599624A447EC0050C94B /* Main.storyboard */,
-				FBFC599B24A447ED0050C94B /* LaunchScreen.storyboard */,
 				FBFC598E24A447EC0050C94B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,14 +108,18 @@
 		FBFC598F24A447EC0050C94B /* alarm */ = {
 			isa = PBXGroup;
 			children = (
-				FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */,
-				FBFC599024A447EC0050C94B /* AppDelegate.swift */,
-				FBFC599224A447EC0050C94B /* SceneDelegate.swift */,
-				FB2BC84C24AAED9B00947588 /* LabelViewController.swift */,
-				FBFC59B024A47B780050C94B /* EditingTableView */,
-				FBFC59AB24A475BC0050C94B /* addAlarm */,
+				FBFC599624A447EC0050C94B /* Main.storyboard */,
+				FBFC599B24A447ED0050C94B /* LaunchScreen.storyboard */,
 				FBFC599924A447ED0050C94B /* Assets.xcassets */,
 				FBFC599E24A447ED0050C94B /* Info.plist */,
+				FBFC599024A447EC0050C94B /* AppDelegate.swift */,
+				FBFC599224A447EC0050C94B /* SceneDelegate.swift */,
+				FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */,
+				FBFC59AB24A475BC0050C94B /* addAlarm */,
+				FBFC59B024A47B780050C94B /* EditingTableView */,
+				FB567F8B24B4A5E200F76373 /* Model */,
+				FB567F8D24B4A7A000F76373 /* RepeatPage */,
+				FB567F8E24B4A7C600F76373 /* LabelPage */,
 			);
 			path = alarm;
 			sourceTree = "<group>";

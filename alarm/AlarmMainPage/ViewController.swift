@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     var alarmList = [AlarmModel]()
-    let onOfSwitch = UISwitch()
-
+    var savedAlarm : AlarmModel?
+    var addVC : AddAlarmViewController!
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -46,33 +46,46 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dist = segue.destination as! UINavigationController
         if (segue.identifier == "addAlarm") {
-            let editVC = dist.topViewController as! AddAlarmViewController
-                editVC.delegate = self
+            let addVC = dist.topViewController as! AddAlarmViewController
+            self.addVC = addVC
+                addVC.delegate = self
+            
             if myTableView.isEditing{
-                editVC.mode = .Edit
-        }else {
-                editVC.mode = .Add
+                addVC.mode = .Edit
+                addVC.tempAlarm = savedAlarm
+            }else {
+                addVC.mode = .Add
             }
         }
     }
-
 }
 
 //MARK: - Tableview
 
 extension ViewController:UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarmList.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = myTableView.dequeueReusableCell(withIdentifier: "cell" , for: indexPath)
+        let myCell = myTableView .dequeueReusableCell(withIdentifier: "cell" , for:indexPath) as! MainPageTableViewCell
         let alarm = alarmList[indexPath.row]
-        cell.textLabel?.text = alarm.title
-        cell.detailTextLabel?.text = alarm.subTitle
-        cell.accessoryView = onOfSwitch
+        myCell.myTitle.text = alarm.time
+        //
+        if alarm.repeatdate == "永不" {
+            myCell.label.text = alarm.label
+        }else {
+            myCell.label.text = alarm.label! + "," + alarm.repeatdate!
+        }
+        //
+        let onOfSwitch = UISwitch()
+        myCell.accessoryView = onOfSwitch
         onOfSwitch.isOn = true
-        cell.accessoryType = .disclosureIndicator
-        return cell
+        myCell.editingAccessoryType = .disclosureIndicator
+        myCell.selectionStyle = .none
+        return myCell
+        
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -94,19 +107,22 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if myTableView.isEditing  {
             popAddAlarm()
+            //
+            savedAlarm = alarmList[indexPath.row]
+            addVC.tempAlarm = savedAlarm
         }
-        
     }
 }
 
 extension ViewController : AlarmSetDelegate {
-    func timeSetting(time: String?, label: String?) {
-        if let time = time, let label = label{
-            let newAlarm = AlarmModel(title: time, subTitle: label, isOn: true)
+    func alarmSetting(time: String?, label: String?,  repeatDate:String?) {
+        if let time = time, let label = label, let repeatDate = repeatDate {
+            let newAlarm = AlarmModel(time: time, label: label, repeatdate: repeatDate, isOn: true)
             alarmList.append(newAlarm)
             let newTex = IndexPath(row: self.alarmList.count - 1, section: 0)
             self.myTableView.insertRows(at: [newTex], with: .automatic)
         }
+
 
         
     }

@@ -14,6 +14,7 @@ class MainPageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var myTitle: UILabel!
     
+    @IBOutlet weak var label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
