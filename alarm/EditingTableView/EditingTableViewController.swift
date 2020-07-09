@@ -12,7 +12,7 @@ class EditingTableViewController: UITableViewController {
     
     var delegate:CellPressedDelegate?
     var addVC : AddAlarmViewController!
-    var mode = EditMode.Add
+    var mode = EditMode.add
     
     @IBOutlet weak var editingTableView: UITableView!
     @IBOutlet weak var repeatLabel: UILabel!
@@ -22,12 +22,13 @@ class EditingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if mode == EditMode.Add {
+        if mode == EditMode.add {
             return 1
         }else{
             return 2

@@ -13,14 +13,12 @@
 		FBD4624524ADB05300FFBD1B /* RepeatDayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD4624424ADB05300FFBD1B /* RepeatDayTableViewController.swift */; };
 		FBFC599124A447EC0050C94B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC599024A447EC0050C94B /* AppDelegate.swift */; };
 		FBFC599324A447EC0050C94B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC599224A447EC0050C94B /* SceneDelegate.swift */; };
-		FBFC599524A447EC0050C94B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC599424A447EC0050C94B /* ViewController.swift */; };
+		FBFC599524A447EC0050C94B /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC599424A447EC0050C94B /* AlarmViewController.swift */; };
 		FBFC599824A447EC0050C94B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFC599624A447EC0050C94B /* Main.storyboard */; };
 		FBFC599A24A447ED0050C94B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBFC599924A447ED0050C94B /* Assets.xcassets */; };
 		FBFC599D24A447ED0050C94B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFC599B24A447ED0050C94B /* LaunchScreen.storyboard */; };
 		FBFC59A924A475670050C94B /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC59A824A475670050C94B /* AddAlarmViewController.swift */; };
 		FBFC59AE24A47B730050C94B /* EditingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC59AC24A47B730050C94B /* EditingTableViewController.swift */; };
-		FBFC59B324A47C0D0050C94B /* EditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC59B124A47C0D0050C94B /* EditingTableViewCell.swift */; };
-		FBFC59B424A47C0D0050C94B /* EditingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBFC59B224A47C0D0050C94B /* EditingTableViewCell.xib */; };
 		FBFC59B624A486510050C94B /* modelAndProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC59B524A486510050C94B /* modelAndProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,15 +30,13 @@
 		FBFC598D24A447EC0050C94B /* alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFC599024A447EC0050C94B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBFC599224A447EC0050C94B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FBFC599424A447EC0050C94B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FBFC599424A447EC0050C94B /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		FBFC599724A447EC0050C94B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FBFC599924A447ED0050C94B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBFC599C24A447ED0050C94B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBFC599E24A447ED0050C94B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBFC59A824A475670050C94B /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		FBFC59AC24A47B730050C94B /* EditingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTableViewController.swift; sourceTree = "<group>"; };
-		FBFC59B124A47C0D0050C94B /* EditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTableViewCell.swift; sourceTree = "<group>"; };
-		FBFC59B224A47C0D0050C94B /* EditingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditingTableViewCell.xib; sourceTree = "<group>"; };
 		FBFC59B524A486510050C94B /* modelAndProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modelAndProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB266C2724B6B94B0063F8A9 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				FB61CFD124A9CB39004EF8C8 /* MainPageTableViewCell.swift */,
+				FB61CFD224A9CB39004EF8C8 /* MainPageTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		FB567F8B24B4A5E200F76373 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,9 +87,8 @@
 		FB61CFD524A9CB7B004EF8C8 /* AlarmMainPage */ = {
 			isa = PBXGroup;
 			children = (
-				FB61CFD124A9CB39004EF8C8 /* MainPageTableViewCell.swift */,
-				FB61CFD224A9CB39004EF8C8 /* MainPageTableViewCell.xib */,
-				FBFC599424A447EC0050C94B /* ViewController.swift */,
+				FBFC599424A447EC0050C94B /* AlarmViewController.swift */,
+				FB266C2724B6B94B0063F8A9 /* cell */,
 			);
 			path = AlarmMainPage;
 			sourceTree = "<group>";
@@ -109,9 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				FBFC599624A447EC0050C94B /* Main.storyboard */,
+				FBFC599E24A447ED0050C94B /* Info.plist */,
 				FBFC599B24A447ED0050C94B /* LaunchScreen.storyboard */,
 				FBFC599924A447ED0050C94B /* Assets.xcassets */,
-				FBFC599E24A447ED0050C94B /* Info.plist */,
 				FBFC599024A447EC0050C94B /* AppDelegate.swift */,
 				FBFC599224A447EC0050C94B /* SceneDelegate.swift */,
 				FB567F8B24B4A5E200F76373 /* Model */,
@@ -136,8 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				FBFC59AC24A47B730050C94B /* EditingTableViewController.swift */,
-				FBFC59B124A47C0D0050C94B /* EditingTableViewCell.swift */,
-				FBFC59B224A47C0D0050C94B /* EditingTableViewCell.xib */,
 			);
 			path = EditingTableView;
 			sourceTree = "<group>";
@@ -202,7 +204,6 @@
 			files = (
 				FBFC599D24A447ED0050C94B /* LaunchScreen.storyboard in Resources */,
 				FB61CFD424A9CB39004EF8C8 /* MainPageTableViewCell.xib in Resources */,
-				FBFC59B424A47C0D0050C94B /* EditingTableViewCell.xib in Resources */,
 				FBFC599A24A447ED0050C94B /* Assets.xcassets in Resources */,
 				FBFC599824A447EC0050C94B /* Main.storyboard in Resources */,
 			);
@@ -216,7 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBFC59B624A486510050C94B /* modelAndProtocol.swift in Sources */,
-				FBFC599524A447EC0050C94B /* ViewController.swift in Sources */,
+				FBFC599524A447EC0050C94B /* AlarmViewController.swift in Sources */,
 				FBFC59AE24A47B730050C94B /* EditingTableViewController.swift in Sources */,
 				FBD4624524ADB05300FFBD1B /* RepeatDayTableViewController.swift in Sources */,
 				FB61CFD324A9CB39004EF8C8 /* MainPageTableViewCell.swift in Sources */,
@@ -224,7 +225,6 @@
 				FB2BC84D24AAED9B00947588 /* LabelViewController.swift in Sources */,
 				FBFC599124A447EC0050C94B /* AppDelegate.swift in Sources */,
 				FBFC599324A447EC0050C94B /* SceneDelegate.swift in Sources */,
-				FBFC59B324A47C0D0050C94B /* EditingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,20 +8,30 @@
 
 import UIKit
 
+
+
 class AddAlarmViewController: UIViewController {
-    var alarmVC: ViewController!
+    
+    static func make(mode: EditMode) -> AddAlarmViewController {
+        let vc = AddAlarmViewController()
+        return vc
+    }
+    
+    var alarmVC: AlarmViewController!
     var editTVC: EditingTableViewController!
 //    var repeatTVC: RepeatDayTableViewController!
 //    var labelVC: LabelViewController!
     var delegate: AlarmSetDelegate?
-    var tempAlarm: AlarmModel?
-    var changedAlarm: AlarmModel?
+    var tempAlarm: Alarm?
+    var changedAlarm: Alarm?
     var array : [Bool]!
     var okTime:String?
     var alarmLabel:String = "鬧鐘"
     var repeatDate:String = "永不"
-    var mode = EditMode.Add
-    var path: Int?
+    var mode: EditMode = .add //    {
+//        (tempAlarm == nil) ? .add : .edit
+//    }
+    var indexPath: Int?
     
     @IBOutlet weak var myTimePicker: UIDatePicker! 
     @IBOutlet weak var myContainView: UIView!
@@ -29,34 +39,27 @@ class AddAlarmViewController: UIViewController {
 
     
     // MARK: - Life
+
+    
     override func viewDidLoad() {
-        print(path)
         super.viewDidLoad()
         navigationItem.title = mode.title
-//        print(mode)
-        switch mode {
-        case .Add:
-            editTVC.alarmName.text = "鬧鐘"
-            editTVC.repeatLabel.text = "永不"
-            editTVC.mode = .Add
-        case .Edit:
-            editTVC.alarmName.text = tempAlarm?.label
-            editTVC.repeatLabel.text = tempAlarm?.repeatdate!
-            editTVC.mode = .Edit
-//            alarmLabel = tempAlarm?.label ?? ""
-//            repeatDate = tempAlarm?.repeatdate ?? "永不"
-            //要把時間套上
-        }
+        modeChoose()
         pickTime()
+        myTimePicker.setValue(UIColor.white, forKey: "textColor")
+        myTimePicker.backgroundColor = UIColor.black.withAlphaComponent(0.6)
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
     }
 
     //MARK: - IBAction
     
-    @IBAction func timePick(_ sender: UIDatePicker) {
+    @IBAction func timePicker(_ sender: UIDatePicker) {
         pickTime()
+        
+
     }
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -67,32 +70,61 @@ class AddAlarmViewController: UIViewController {
             array = Array(repeating: false, count: 7)
         }
         switch mode {
-        case .Add:
+        case .add:
 
         delegate?.alarmSetting(time: okTime, label: alarmLabel, repeatDate:repeatDate, isOn: true ,array:array)
-        case .Edit:
+        case .edit:
             tempAlarm?.time = okTime!
             tempAlarm?.label = alarmLabel
             tempAlarm?.repeatdate = repeatDate
             tempAlarm?.repeatArray = array
-            delegate?.valueChanged(array: tempAlarm, index: path!)
+            delegate?.valueChanged(array: tempAlarm, index: indexPath!)
         }
         self.dismiss(animated: true, completion: nil)
     }
     //MARK: - Func
+    fileprivate func modeChoose() {
+        switch mode {
+        case .add:
+            editTVC.alarmName.text = "鬧鐘"
+            editTVC.repeatLabel.text = "永不"
+            editTVC.mode = .add
+        case .edit:
+            editTVC.alarmName.text = tempAlarm?.label
+            editTVC.repeatLabel.text = tempAlarm?.repeatdate!
+            editTVC.mode = .edit
+            //            alarmLabel = tempAlarm?.label ?? ""
+            //            repeatDate = tempAlarm?.repeatdate ?? "永不"
+            //要把時間套上
+            pick()
+        }
+    }
+    
     func pickTime() {
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm"
         formatter.timeStyle = .short
 //        formatter.amSymbol = "上午"
 //        myTimePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale //24小時制
-        self.okTime = formatter.string(from:myTimePicker.date)
-//        if let okTime = formatter.date(from: okTime ?? ""){
-//            myTimePicker.setDate(okTime, animated: true)
-//        }
+            self.okTime = formatter.string(from:myTimePicker.date)
+        }
+        func pick(){
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm"
+            formatter.timeStyle = .short
+            if let date = formatter.date(from: tempAlarm?.time ?? "") {
+                myTimePicker.setDate(date, animated: true)
+        }
+        
+//        }//改成儲存ＤＡＴＥ
     }
     //MARK: prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        switch segue.destination {
+//        case let editTVC as EditingTableViewController:
+//            editTVC.
+//        default:
+//        }
         switch segue.identifier {
         case "editTableVCSegue":
             let editTableView = segue.destination as! EditingTableViewController
@@ -102,19 +134,19 @@ class AddAlarmViewController: UIViewController {
             let labelVC = segue.destination as! LabelViewController
             labelVC.delegate = self
                 switch mode {
-                    case .Add:
+                    case .add:
                     labelVC.label = alarmLabel
-                    case .Edit:
+                    case .edit:
                     labelVC.label = tempAlarm?.label
                 }
         case "repeatDayPageSegue":
             let repeatVC = segue.destination as! RepeatDayTableViewController
             repeatVC.delegate = self
             switch mode {
-                case .Add:
-                repeatVC.mode = .Add
-                case .Edit:
-                repeatVC.mode = .Edit
+                case .add:
+                repeatVC.mode = .add
+                case .edit:
+                repeatVC.mode = .edit
                 repeatVC.selected = tempAlarm?.repeatArray as! [Bool]
             }
             
@@ -127,10 +159,11 @@ class AddAlarmViewController: UIViewController {
 
 extension AddAlarmViewController: CellPressedDelegate{
     func delete() {
-        if let path = path {
-            alarmVC.alarmList.remove(at: path)
-        }
         dismiss(animated: true, completion: nil)
+        if let indexPath = indexPath {
+            alarmVC.alarms.remove(at: indexPath)
+            alarmVC.myTableView.reloadData()
+        }
     }
     
     func goNextPage(destination:String) {

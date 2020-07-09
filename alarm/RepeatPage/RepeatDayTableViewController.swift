@@ -13,18 +13,18 @@ class RepeatDayTableViewController: UITableViewController {
     
     let dayOfWeek = ["星期日", "星期一", "星期二", "星期三","星期四", "星期五", "星期六"]
     var secDayOfWeek = ["週日", "週一", "週二", "週三", "週四", "週五", "週六"]
-    var selected = [Bool]()
+    var selected: [Bool]?
     var isSelected = [Bool]()
     var repeatDays: String!
-    var mode = EditMode.Add
+    var mode = EditMode.add
 
     override func viewDidLoad() {
         super.viewDidLoad()
         switch mode {
-        case .Add:
+        case .add:
             isSelected = Array(repeating: false, count: dayOfWeek.count)
-        case .Edit:
-            isSelected = selected
+        case .edit:
+                isSelected = selected!
         }
     }
     
@@ -74,13 +74,12 @@ class RepeatDayTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        isSelected[indexPath.row] = !isSelected[indexPath.row]
+//        isSelected[indexPath.row] = !isSelected[indexPath.row]
+        
+        isSelected[indexPath.row].toggle() //mutating func
+        
         print(dayOfWeek[indexPath.row])
         tableView.reloadData()
     }
-    
-
-
-
 
 }

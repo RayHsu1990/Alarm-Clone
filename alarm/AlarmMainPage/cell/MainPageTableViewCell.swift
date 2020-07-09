@@ -15,9 +15,14 @@ class MainPageTableViewCell: UITableViewCell {
     @IBOutlet weak var myTitle: UILabel!
     
     @IBOutlet weak var label: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+//        myCell.editingAccessoryType = .disclosureIndicator
+//        myCell.selectionStyle = .none
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,4 +31,8 @@ class MainPageTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    func update(by alarm: Alarm) {
+        myTitle.text = alarm.label
+    }
 }
