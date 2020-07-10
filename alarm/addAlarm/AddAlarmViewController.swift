@@ -48,6 +48,7 @@ class AddAlarmViewController: UIViewController {
         pickTime()
         myTimePicker.setValue(UIColor.white, forKey: "textColor")
         myTimePicker.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
     }
 
     
@@ -69,16 +70,20 @@ class AddAlarmViewController: UIViewController {
         if array == nil {
             array = Array(repeating: false, count: 7)
         }
+        
         switch mode {
         case .add:
-
         delegate?.alarmSetting(time: okTime, label: alarmLabel, repeatDate:repeatDate, isOn: true ,array:array)
         case .edit:
             tempAlarm?.time = okTime!
             tempAlarm?.label = alarmLabel
             tempAlarm?.repeatdate = repeatDate
             tempAlarm?.repeatArray = array
-            delegate?.valueChanged(array: tempAlarm, index: indexPath!)
+            if let indexPath = indexPath {
+                delegate?.valueChanged(array: tempAlarm, index: indexPath)
+            }else {
+                delegate?.alarmSetting(time: okTime, label: alarmLabel, repeatDate:repeatDate, isOn: true ,array:array)
+            }
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -93,9 +98,6 @@ class AddAlarmViewController: UIViewController {
             editTVC.alarmName.text = tempAlarm?.label
             editTVC.repeatLabel.text = tempAlarm?.repeatdate!
             editTVC.mode = .edit
-            //            alarmLabel = tempAlarm?.label ?? ""
-            //            repeatDate = tempAlarm?.repeatdate ?? "永不"
-            //要把時間套上
             pick()
         }
     }
@@ -104,16 +106,16 @@ class AddAlarmViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm"
         formatter.timeStyle = .short
-//        formatter.amSymbol = "上午"
 //        myTimePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale //24小時制
-            self.okTime = formatter.string(from:myTimePicker.date)
+        self.okTime = formatter.string(from:myTimePicker.date)
         }
-        func pick(){
-            let formatter = DateFormatter()
-            formatter.dateFormat = "hh:mm"
-            formatter.timeStyle = .short
-            if let date = formatter.date(from: tempAlarm?.time ?? "") {
-                myTimePicker.setDate(date, animated: true)
+    
+    func pick(){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm"
+        formatter.timeStyle = .short
+        if let date = formatter.date(from: tempAlarm?.time ?? "") {
+            myTimePicker.setDate(date, animated: true)
         }
         
 //        }//改成儲存ＤＡＴＥ

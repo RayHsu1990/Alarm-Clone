@@ -33,6 +33,7 @@
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="label" destination="Xhs-v0-gpk" id="jVk-kb-vex"/>

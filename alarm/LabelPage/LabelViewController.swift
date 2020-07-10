@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabelViewController: UIViewController {
+class LabelViewController: UIViewController, UITextFieldDelegate {
     
     var label: String?
     var delegate: LabelSetDelegate?
@@ -18,6 +18,7 @@ class LabelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myTextField.delegate = self
         myTextField.becomeFirstResponder()
         myTextField.enablesReturnKeyAutomatically = true
     }
@@ -30,9 +31,20 @@ class LabelViewController: UIViewController {
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
-        label = myTextField.text
-        delegate?.labelSet(label: label!)
+        if let label = myTextField.text {
+            delegate?.labelSet(label: label)
+
+        }
         
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let label = myTextField.text {
+            delegate?.labelSet(label: label)
+            navigationController?.popViewController(animated: true)
+        }
+        return true
+    }
+    
 
 }

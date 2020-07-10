@@ -65,21 +65,14 @@ class RepeatDayTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = dayOfWeek[indexPath.row]
-        if isSelected[indexPath.row] {
-            cell.accessoryType = .checkmark
-        }else {
-            cell.accessoryType = .none
-        }
+        cell.accessoryType = isSelected[indexPath.row] ? .checkmark : .none
         
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        isSelected[indexPath.row] = !isSelected[indexPath.row]
-        
-        isSelected[indexPath.row].toggle() //mutating func
-        
+        isSelected[indexPath.row].toggle()
         print(dayOfWeek[indexPath.row])
-        tableView.reloadData()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
 }
