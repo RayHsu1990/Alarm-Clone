@@ -29,7 +29,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="鬧鐘" id="pTc-uD-Gmj">
+                    <navigationItem key="navigationItem" title="鬧鐘" largeTitleDisplayMode="always" id="pTc-uD-Gmj">
                         <barButtonItem key="leftBarButtonItem" title="編輯" id="ng6-8X-q0D">
                             <connections>
                                 <action selector="editButton:" destination="BYZ-38-t0r" id="mdI-R0-ZMg"/>
@@ -70,7 +70,7 @@
                                 </connections>
                             </datePicker>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbM-eL-SzW">
-                                <rect key="frame" x="0.0" y="272" width="414" height="305"/>
+                                <rect key="frame" x="0.0" y="272" width="414" height="321"/>
                                 <color key="backgroundColor" red="0.18039363620000001" green="0.18038946389999999" blue="0.18039226529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <segue destination="YkJ-Xg-TcK" kind="embed" identifier="editTableVCSegue" id="Fgk-dY-mIL"/>
@@ -85,7 +85,7 @@
                             <constraint firstItem="0MN-Ck-2sT" firstAttribute="leading" secondItem="TUa-bd-ovj" secondAttribute="leading" id="cnU-22-8Nk"/>
                             <constraint firstItem="GbM-eL-SzW" firstAttribute="leading" secondItem="TUa-bd-ovj" secondAttribute="leading" id="imO-cR-fXH"/>
                             <constraint firstItem="0MN-Ck-2sT" firstAttribute="top" secondItem="TUa-bd-ovj" secondAttribute="top" id="nFc-p9-mne"/>
-                            <constraint firstItem="TUa-bd-ovj" firstAttribute="bottom" secondItem="GbM-eL-SzW" secondAttribute="bottom" constant="231" id="up7-gF-IkT"/>
+                            <constraint firstItem="TUa-bd-ovj" firstAttribute="bottom" secondItem="GbM-eL-SzW" secondAttribute="bottom" constant="215" id="up7-gF-IkT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TUa-bd-ovj"/>
                     </view>
@@ -119,18 +119,20 @@
         <scene sceneID="WZh-qZ-ozY">
             <objects>
                 <tableViewController storyboardIdentifier="repeatDayVC" id="6ek-TM-ixb" customClass="RepeatDayTableViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KhV-s2-eTU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="KhV-s2-eTU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="hS4-Ru-uPt">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hS4-Ru-uPt" id="32O-3S-Kci">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.18039363620000001" green="0.18038946389999999" blue="0.18039226529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -191,7 +193,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="EditingTableVC" id="YkJ-Xg-TcK" customClass="EditingTableViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vnx-Td-wrI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="305"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="321"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.18039363620000001" green="0.18038946389999999" blue="0.18039226529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -394,6 +396,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -420,6 +423,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.18039363620000001" green="0.18038946389999999" blue="0.18039226529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

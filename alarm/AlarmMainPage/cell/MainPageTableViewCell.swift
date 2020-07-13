@@ -31,7 +31,6 @@ class MainPageTableViewCell: UITableViewCell {
     
     
     func update(by alarm: Alarm) {
-//        myTitle.text = alarm.label
         myTitle.text = alarm.time
         if alarm.repeatdate == "永不" {
             label.text = alarm.label

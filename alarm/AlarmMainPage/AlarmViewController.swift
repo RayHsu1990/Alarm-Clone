@@ -14,7 +14,6 @@ import UIKit
 class AlarmViewController: UIViewController {
     
     var alarms = [Alarm]()
-    var savedAlarm : Alarm?
     var addVC : AddAlarmViewController!
     
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -30,12 +29,20 @@ class AlarmViewController: UIViewController {
     //MARK: IBAction
     @IBAction func newButton(_ sender: UIBarButtonItem) {
         popAddAlarm()
+        addVC.mode = .add
     }
     
     @IBAction func editButton(_ sender: UIBarButtonItem) {
-        myTableView.isEditing.toggle()
-        editButton.title = myTableView.isEditing ? "完成" : "編輯"
-
+//        myTableView.isEditing.toggle()
+//        editButton.title = myTableView.isEditing ? "完成" : "編輯"
+        
+        if myTableView.isEditing == false{
+            myTableView.setEditing(true, animated: true)
+            editButton.title = "完成"
+        }else {
+            myTableView.setEditing(false, animated: true)
+            editButton.title = "編輯"
+        }
     }
     
     //MARK: Func
@@ -49,9 +56,8 @@ class AlarmViewController: UIViewController {
     }
     
     func colorSetting() {
-        navigationItem.leftBarButtonItem?.tintColor = .orange
-        navigationItem.rightBarButtonItem?.tintColor = .orange
-        myTableView.separatorColor = .lightGray
+//        navigationItem.leftBarButtonItem?.tintColor =         navigationItem.rightBarButtonItem?.tintColor = .orange
+//        myTableView.separatorColor = .lightGray
         //cell 產生才出現separator
         myTableView.tableFooterView = UIView(frame: CGRect.zero)
     }
@@ -66,7 +72,7 @@ class AlarmViewController: UIViewController {
     @objc func switchOnOff(_ sender: UISwitch) {
         let index = sender.tag
         alarms[index].isOn = sender.isOn ? true : false
-        myTableView.reloadRows(at: [[0, index]], with: .automatic)
+        myTableView.reloadRows(at: [[0, index]], with: .none)
     }
     
     //MARK: Prepare
@@ -77,6 +83,7 @@ class AlarmViewController: UIViewController {
             self.addVC = addVC
             addVC.alarmVC = self
             addVC.delegate = self
+            
         }
     }
 }
@@ -105,7 +112,7 @@ extension AlarmViewController:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             alarms.remove(at: indexPath.row)
-            tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -116,14 +123,20 @@ extension AlarmViewController:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if myTableView.isEditing  {
             popAddAlarm()
-            //
             addVC.tempAlarm = alarms[indexPath.row]
             addVC.indexPath = indexPath.row
             addVC.mode = .edit
-            
-            myTableView.isEditing = false
-            editButton.title = "編輯"
         }
+        myTableView.isEditing = false
+        editButton.title = "編輯"
+    }
+    
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        editButton.title = "完成"
+    }
+
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        editButton.title = "編輯"
     }
 }
 //MARK: - Protocol
@@ -133,11 +146,11 @@ extension AlarmViewController : AlarmSetDelegate {
     func setAlarm(alarm: Alarm?) {
         alarms.append(alarm!)
         let index = IndexPath(row: self.alarms.count - 1, section: 0) //這個要改 順序不對
-        self.myTableView.insertRows(at: [index], with: .automatic)    }
+        self.myTableView.insertRows(at: [index], with: .automatic)
+    }
     //編輯過後的
     func valueChanged(array: Alarm?, index: Int) {
             alarms[index] = array!
         myTableView.reloadData()
-        print(alarms)
     }
 }

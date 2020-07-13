@@ -22,9 +22,9 @@ class AddAlarmViewController: UIViewController {
     var delegate: AlarmSetDelegate?
     var tempAlarm: Alarm?
     var array : [Bool]!
-    var okTime:String?
-    var alarmLabel:String = "鬧鐘"
-    var repeatDate:String = "永不"
+//    var okTime:String?
+//    var alarmLabel:String = "鬧鐘"
+//    var repeatDate:String = "永不"
     var mode: EditMode = .add
     var indexPath: Int?
     
