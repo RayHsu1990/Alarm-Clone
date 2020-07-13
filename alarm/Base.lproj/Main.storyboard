@@ -140,6 +140,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="重複" id="sNl-77-cpJ"/>
+                    <connections>
+                        <outlet property="repeatTableView" destination="KhV-s2-eTU" id="Rh1-fI-gZE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P2h-Ew-RBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

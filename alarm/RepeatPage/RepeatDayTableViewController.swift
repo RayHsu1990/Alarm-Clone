@@ -13,19 +13,12 @@ class RepeatDayTableViewController: UITableViewController {
     
     let dayOfWeek = ["星期日", "星期一", "星期二", "星期三","星期四", "星期五", "星期六"]
     var secDayOfWeek = ["週日", "週一", "週二", "週三", "週四", "週五", "週六"]
-    var selected: [Bool]?
     var isSelected = [Bool]()
-    var repeatDays: String!
-    var mode = EditMode.add
 
+    @IBOutlet weak var repeatTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        switch mode {
-        case .add:
-            isSelected = Array(repeating: false, count: dayOfWeek.count)
-        case .edit:
-                isSelected = selected!
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,6 +43,10 @@ class RepeatDayTableViewController: UITableViewController {
         }
         delegate?.repeatDaysSet(dayOfWeek: repeatString, array: isSelected)
         print(repeatString)
+    }
+    
+    // MARK: - func
+    func setCollors() {
     }
 
     // MARK: - Table view data source

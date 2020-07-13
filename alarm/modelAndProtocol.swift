@@ -9,7 +9,7 @@
 import Foundation
 
 struct Alarm {
-    var time: String
+    var time: String?
     var label: String?
     var repeatdate: String?
     var repeatArray: [Bool]
@@ -57,9 +57,7 @@ enum EditMode {
 
 protocol AlarmSetDelegate {
     func setAlarm(alarm:Alarm?)
-    
-    func alarmSetting(time: String?, label: String?, repeatDate:String?, isOn: Bool ,array:[Bool])
-    
+        
     func valueChanged (array: Alarm?, index:Int )
 }
 protocol LabelSetDelegate {

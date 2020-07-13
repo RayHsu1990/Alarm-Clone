@@ -131,16 +131,9 @@ extension AlarmViewController:UITableViewDataSource, UITableViewDelegate {
 //MARK: 第二頁傳值過來
 extension AlarmViewController : AlarmSetDelegate {
     func setAlarm(alarm: Alarm?) {
-         
-    }
-    
-    //第一次傳過來
-    func alarmSetting(time: String?, label: String?,  repeatDate:String?, isOn: Bool ,array:[Bool]) {
-        let newAlarm = Alarm(time: time!, label: label, repeatdate: repeatDate, repeatArray: array, isOn: true)
-            alarms.append(newAlarm)
-            let index = IndexPath(row: self.alarms.count - 1, section: 0) //這個要改 順序不對
-            self.myTableView.insertRows(at: [index], with: .automatic)
-    }
+        alarms.append(alarm!)
+        let index = IndexPath(row: self.alarms.count - 1, section: 0) //這個要改 順序不對
+        self.myTableView.insertRows(at: [index], with: .automatic)    }
     //編輯過後的
     func valueChanged(array: Alarm?, index: Int) {
             alarms[index] = array!
