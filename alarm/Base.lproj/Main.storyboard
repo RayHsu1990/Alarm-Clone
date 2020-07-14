@@ -15,9 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="87" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="gjF-Sh-aFu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="87" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="gjF-Sh-aFu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -27,6 +26,14 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gjF-Sh-aFu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3l9-k2-5Y7"/>
+                            <constraint firstAttribute="bottom" secondItem="gjF-Sh-aFu" secondAttribute="bottom" id="4Eq-mQ-agH"/>
+                            <constraint firstItem="gjF-Sh-aFu" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="aBI-Vc-Oid"/>
+                            <constraint firstItem="gjF-Sh-aFu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ft8-Hn-AfE"/>
+                            <constraint firstItem="gjF-Sh-aFu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gIw-B8-uHB"/>
+                            <constraint firstItem="gjF-Sh-aFu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="zMg-F5-GeT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="鬧鐘" largeTitleDisplayMode="always" id="pTc-uD-Gmj">
@@ -63,14 +70,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-Ck-2sT">
-                                <rect key="frame" x="0.0" y="56" width="414" height="216"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="209.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="timePicker:" destination="UhA-rt-2X6" eventType="valueChanged" id="Ib0-RU-Lnl"/>
                                 </connections>
                             </datePicker>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbM-eL-SzW">
-                                <rect key="frame" x="0.0" y="272" width="414" height="321"/>
+                                <rect key="frame" x="0.0" y="265.5" width="414" height="327.5"/>
                                 <color key="backgroundColor" red="0.18039363620000001" green="0.18038946389999999" blue="0.18039226529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <segue destination="YkJ-Xg-TcK" kind="embed" identifier="editTableVCSegue" id="Fgk-dY-mIL"/>
@@ -80,8 +87,11 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GbM-eL-SzW" firstAttribute="trailing" secondItem="TUa-bd-ovj" secondAttribute="trailing" id="3P5-va-4sq"/>
+                            <constraint firstItem="0MN-Ck-2sT" firstAttribute="height" secondItem="MAR-1U-98U" secondAttribute="height" multiplier="0.25" constant="-1" id="5KT-lV-ftf"/>
                             <constraint firstItem="0MN-Ck-2sT" firstAttribute="trailing" secondItem="TUa-bd-ovj" secondAttribute="trailing" id="KXY-L4-lOB"/>
                             <constraint firstItem="GbM-eL-SzW" firstAttribute="top" secondItem="0MN-Ck-2sT" secondAttribute="bottom" id="MLS-fT-KUG"/>
+                            <constraint firstItem="0MN-Ck-2sT" firstAttribute="width" secondItem="MAR-1U-98U" secondAttribute="width" id="N5r-LG-mRO"/>
+                            <constraint firstItem="GbM-eL-SzW" firstAttribute="width" secondItem="MAR-1U-98U" secondAttribute="width" id="O1c-y8-Ja2"/>
                             <constraint firstItem="0MN-Ck-2sT" firstAttribute="leading" secondItem="TUa-bd-ovj" secondAttribute="leading" id="cnU-22-8Nk"/>
                             <constraint firstItem="GbM-eL-SzW" firstAttribute="leading" secondItem="TUa-bd-ovj" secondAttribute="leading" id="imO-cR-fXH"/>
                             <constraint firstItem="0MN-Ck-2sT" firstAttribute="top" secondItem="TUa-bd-ovj" secondAttribute="top" id="nFc-p9-mne"/>
@@ -193,7 +203,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="EditingTableVC" id="YkJ-Xg-TcK" customClass="EditingTableViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vnx-Td-wrI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="321"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="327.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.18039363620000001" green="0.18038946389999999" blue="0.18039226529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
