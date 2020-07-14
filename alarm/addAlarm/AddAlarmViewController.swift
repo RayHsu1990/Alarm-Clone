@@ -22,9 +22,6 @@ class AddAlarmViewController: UIViewController {
     var delegate: AlarmSetDelegate?
     var tempAlarm: Alarm?
     var array : [Bool]!
-//    var okTime:String?
-//    var alarmLabel:String = "鬧鐘"
-//    var repeatDate:String = "永不"
     var mode: EditMode = .add
     var indexPath: Int?
     
@@ -53,12 +50,13 @@ class AddAlarmViewController: UIViewController {
     }
     // MARK: 按下儲存鍵
     @IBAction func clickSaveButton(_ sender: UIBarButtonItem) {
+        tempAlarm?.isOn = true
         switch mode {
         case .add:
-        delegate?.setAlarm(alarm: tempAlarm)
+        delegate?.setAlarm(alarm: tempAlarm!)
         case .edit:
             if let indexPath = indexPath {
-                delegate?.valueChanged(array: tempAlarm, index: indexPath)
+                delegate?.valueChanged(array: tempAlarm!, index: indexPath)
             }
         }
         self.dismiss(animated: true, completion: nil)
@@ -69,13 +67,13 @@ class AddAlarmViewController: UIViewController {
         switch mode {
         case .add:
             array = Array(repeating: false, count: 7)
-            tempAlarm = Alarm(label: "鬧鐘", repeatdate: "永不", repeatArray: array)
+            tempAlarm = Alarm(time: "", label: "鬧鐘", repeatDate: "永不", repeatArray: array)
             editTVC.alarmName.text = tempAlarm?.label
-            editTVC.repeatLabel.text = tempAlarm?.repeatdate
+            editTVC.repeatLabel.text = tempAlarm?.repeatDate
             editTVC.mode = .add
         case .edit:
             editTVC.alarmName.text = tempAlarm?.label
-            editTVC.repeatLabel.text = tempAlarm?.repeatdate
+            editTVC.repeatLabel.text = tempAlarm?.repeatDate
             editTVC.mode = .edit
             pick()
         }
@@ -98,7 +96,6 @@ class AddAlarmViewController: UIViewController {
     
     func timePickerSetting(){
         myTimePicker.setValue(UIColor.white, forKey: "textColor")
-        myTimePicker.backgroundColor = UIColor.black.withAlphaComponent(0.6)
     }
     //MARK: prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -149,8 +146,8 @@ extension AddAlarmViewController: LabelSetDelegate {
 //MARK: - 重複頁傳回來
 extension AddAlarmViewController: RepeatDaysSetDelegate {
     func repeatDaysSet(dayOfWeek: String, array: [Bool]) {
-        tempAlarm?.repeatdate = dayOfWeek
+        tempAlarm?.repeatDate = dayOfWeek
         tempAlarm?.repeatArray = array
-        self.editTVC.repeatLabel.text = tempAlarm?.repeatdate
+        self.editTVC.repeatLabel.text = tempAlarm?.repeatDate
     }
 }

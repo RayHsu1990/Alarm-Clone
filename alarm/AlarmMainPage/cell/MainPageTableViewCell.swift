@@ -32,10 +32,10 @@ class MainPageTableViewCell: UITableViewCell {
     
     func update(by alarm: Alarm) {
         myTitle.text = alarm.time
-        if alarm.repeatdate == "永不" {
+        if alarm.repeatDate == "永不" {
             label.text = alarm.label
         }else {
-            label.text = alarm.label! + "," + alarm.repeatdate!
+            label.text = alarm.label! + "," + alarm.repeatDate!
         }
         myTitle.textColor = alarm.isOn ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         label.textColor = alarm.isOn ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)

@@ -15,6 +15,7 @@ class AlarmViewController: UIViewController {
     
     var alarms = [Alarm]()
     var addVC : AddAlarmViewController!
+    var mode : EditMode!
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -35,7 +36,6 @@ class AlarmViewController: UIViewController {
     @IBAction func editButton(_ sender: UIBarButtonItem) {
 //        myTableView.isEditing.toggle()
 //        editButton.title = myTableView.isEditing ? "完成" : "編輯"
-        
         if myTableView.isEditing == false{
             myTableView.setEditing(true, animated: true)
             editButton.title = "完成"
@@ -143,14 +143,20 @@ extension AlarmViewController:UITableViewDataSource, UITableViewDelegate {
 
 //MARK: 第二頁傳值過來
 extension AlarmViewController : AlarmSetDelegate {
-    func setAlarm(alarm: Alarm?) {
-        alarms.append(alarm!)
-        let index = IndexPath(row: self.alarms.count - 1, section: 0) //這個要改 順序不對
-        self.myTableView.insertRows(at: [index], with: .automatic)
+    func setAlarm(alarm: Alarm) {
+        alarms.append(alarm)
+        alarms.sort { (alarm1, alarm2) -> Bool in
+            return alarm1.time < alarm2.time
+        }
+        myTableView.reloadData()
     }
     //編輯過後的
-    func valueChanged(array: Alarm?, index: Int) {
-            alarms[index] = array!
+    func valueChanged(array: Alarm, index: Int) {
+        alarms[index] = array
+        alarms.sort { (alarm1, alarm2) -> Bool in
+            return alarm1.time < alarm2.time
+        }
         myTableView.reloadData()
     }
 }
+
