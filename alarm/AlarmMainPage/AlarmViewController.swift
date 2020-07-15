@@ -82,7 +82,7 @@ class AlarmViewController: UIViewController {
             alarms = decoded
             myTableView.reloadData()
         } catch {
-            print("Load error")
+            print("Load \(error)")
         }
         return alarms
     }

@@ -12,7 +12,7 @@ import Foundation
 class AlarmData {
         
     
-    func saveData(alarmArray: [Alarm]) {
+    static func saveData(alarmArray: [Alarm]) {
         let encoder = JSONEncoder()
         do {
             let data = try encoder.encode(alarmArray)
@@ -22,7 +22,7 @@ class AlarmData {
         }
     }
     
-    func loadData(alarmArray: [Alarm]) -> [Alarm] {
+    static func loadData(alarmArray: [Alarm]) -> [Alarm] {
         guard let data = UserDefaults.standard.data(forKey: "alarmsKey") else {
             return [Alarm]()
         }
