@@ -22,27 +22,30 @@ class LabelViewController: UIViewController, UITextFieldDelegate {
         myTextField.becomeFirstResponder()
         myTextField.enablesReturnKeyAutomatically = true
     }
+    func sendBackText() {
+        if let label = myTextField.text {
+            if label == "" {
+                delegate?.labelSet(label: "鬧鐘")
+            }else {
+                delegate?.labelSet(label: label)
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        if  label != nil {
+        if let label = label {
             self.myTextField.text = label
         }else {
             myTextField.text = ""
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
-        if let label = myTextField.text {
-            delegate?.labelSet(label: label)
-
-        }
-        
+        sendBackText()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let label = myTextField.text {
-            delegate?.labelSet(label: label)
-            navigationController?.popViewController(animated: true)
-        }
+        sendBackText()
+        navigationController?.popViewController(animated: true)
         return true
     }
     

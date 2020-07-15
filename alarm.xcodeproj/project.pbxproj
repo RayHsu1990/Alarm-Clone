@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB00146024BEE7960052EED2 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00145F24BEE7960052EED2 /* AlarmData.swift */; };
 		FB2BC84D24AAED9B00947588 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BC84C24AAED9B00947588 /* LabelViewController.swift */; };
 		FB61CFD324A9CB39004EF8C8 /* MainPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61CFD124A9CB39004EF8C8 /* MainPageTableViewCell.swift */; };
 		FB61CFD424A9CB39004EF8C8 /* MainPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB61CFD224A9CB39004EF8C8 /* MainPageTableViewCell.xib */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB00145F24BEE7960052EED2 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
 		FB2BC84C24AAED9B00947588 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		FB61CFD124A9CB39004EF8C8 /* MainPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageTableViewCell.swift; sourceTree = "<group>"; };
 		FB61CFD224A9CB39004EF8C8 /* MainPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPageTableViewCell.xib; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				FBFC59B524A486510050C94B /* modelAndProtocol.swift */,
+				FB00145F24BEE7960052EED2 /* AlarmData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				FBFC59AE24A47B730050C94B /* EditingTableViewController.swift in Sources */,
 				FBD4624524ADB05300FFBD1B /* RepeatDayTableViewController.swift in Sources */,
 				FB61CFD324A9CB39004EF8C8 /* MainPageTableViewCell.swift in Sources */,
+				FB00146024BEE7960052EED2 /* AlarmData.swift in Sources */,
 				FBFC59A924A475670050C94B /* AddAlarmViewController.swift in Sources */,
 				FB2BC84D24AAED9B00947588 /* LabelViewController.swift in Sources */,
 				FBFC599124A447EC0050C94B /* AppDelegate.swift in Sources */,

@@ -13,9 +13,13 @@ import UIKit
 // TODO: rename
 class AlarmViewController: UIViewController {
     
-    var alarms = [Alarm]()
+    var alarms = [Alarm](){
+        didSet {
+            save()
+        }
+    }
     var addVC : AddAlarmViewController!
-    var mode : EditMode!
+//    var mode : EditMode!
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -24,7 +28,9 @@ class AlarmViewController: UIViewController {
     //MARK: - Life
     override func viewDidLoad() {
         registerCell()
-        colorSetting()
+        //cell 產生才出現separator
+        myTableView.tableFooterView = UIView(frame: CGRect.zero)
+        alarms = load()
     }
     
     //MARK: IBAction
@@ -32,7 +38,7 @@ class AlarmViewController: UIViewController {
         popAddAlarm()
         addVC.mode = .add
     }
-    
+    #warning("要怎麼改")
     @IBAction func editButton(_ sender: UIBarButtonItem) {
 //        myTableView.isEditing.toggle()
 //        editButton.title = myTableView.isEditing ? "完成" : "編輯"
@@ -49,17 +55,36 @@ class AlarmViewController: UIViewController {
     func popAddAlarm() {
         performSegue(withIdentifier: "addAlarm", sender: nil)
         
+        #warning("改成這樣")
 //        let vc = ViewController()
 //        vc.alarmList = []
 //        self.present(vc, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
 //        let vc = AddAlarmViewController(
     }
+
+    func save(){
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(alarms)
+            UserDefaults.standard.set(data, forKey: "alarmsKey")
+        } catch {
+            print("Save error")
+        }
+    }
     
-    func colorSetting() {
-//        navigationItem.leftBarButtonItem?.tintColor =         navigationItem.rightBarButtonItem?.tintColor = .orange
-//        myTableView.separatorColor = .lightGray
-        //cell 產生才出現separator
-        myTableView.tableFooterView = UIView(frame: CGRect.zero)
+    func load() -> [Alarm]{
+        guard let data = UserDefaults.standard.data(forKey: "alarmsKey") else {
+            return [Alarm]()
+        }
+        let decoder = JSONDecoder()
+        do {
+            let decoded = try decoder.decode([Alarm].self, from: data)
+            alarms = decoded
+            myTableView.reloadData()
+        } catch {
+            print("Load error")
+        }
+        return alarms
     }
     
     func registerCell() {
@@ -93,7 +118,7 @@ class AlarmViewController: UIViewController {
 extension AlarmViewController:UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return alarms.count
+        return alarms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

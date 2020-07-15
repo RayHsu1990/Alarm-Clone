@@ -8,11 +8,11 @@
 //"星期日", "星期一", "星期二", "星期三","星期四", "星期五", "星期六"
 import Foundation
 
-struct Alarm {
-    var time: String
-    var label: String?
-    var repeatDate: String?
-    var repeatArray: [Bool]
+struct Alarm: Codable{
+    var time: String = ""
+    var label: String = "鬧鐘"
+    var repeatDate: String = "永不"
+    var repeatArray: [Bool] = Array(repeating: false, count: 7)
     var isOn: Bool = true
     var remindLater : Bool = false
     

@@ -19,9 +19,9 @@ class AddAlarmViewController: UIViewController {
     
     var alarmVC: AlarmViewController!
     var editTVC: EditingTableViewController!
+    
     var delegate: AlarmSetDelegate?
     var tempAlarm: Alarm?
-    var array : [Bool]!
     var mode: EditMode = .add
     var indexPath: Int?
     
@@ -66,8 +66,7 @@ class AddAlarmViewController: UIViewController {
         navigationItem.title = mode.title
         switch mode {
         case .add:
-            array = Array(repeating: false, count: 7)
-            tempAlarm = Alarm(time: "", label: "鬧鐘", repeatDate: "永不", repeatArray: array)
+            tempAlarm = Alarm()
             editTVC.alarmName.text = tempAlarm?.label
             editTVC.repeatLabel.text = tempAlarm?.repeatDate
             editTVC.mode = .add
@@ -83,9 +82,10 @@ class AddAlarmViewController: UIViewController {
         formatter.dateFormat = "hh:mm"
         formatter.timeStyle = .short
         tempAlarm?.time = formatter.string(from:myTimePicker.date)
+        print(myTimePicker.date)
         }
     #warning("這邊要改")
-    func pick(){
+    func pick() {
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm"
         formatter.timeStyle = .short
@@ -131,7 +131,6 @@ extension AddAlarmViewController: CellPressedDelegate{
             alarmVC.myTableView.reloadData()
         }
     }
-    
     func goNextPage(destination:String) {
         performSegue(withIdentifier: destination, sender: nil)
     }
