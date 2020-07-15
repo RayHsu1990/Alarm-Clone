@@ -60,6 +60,15 @@ class EditingTableViewController: UITableViewController {
             break
         }
     }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
+    }
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: 414 , height: 30))
+        footer.backgroundColor = .none
+        return footer
+    }
 
 }
 
