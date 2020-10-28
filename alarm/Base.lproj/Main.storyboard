@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t3s-G9-LrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t3s-G9-LrT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,11 +15,12 @@
             <objects>
                 <viewController storyboardIdentifier="mainPage" id="BYZ-38-t0r" customClass="AlarmViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="87" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gjF-Sh-aFu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="gB2-eU-m72"/>
@@ -25,7 +28,8 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gjF-Sh-aFu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3l9-k2-5Y7"/>
                             <constraint firstAttribute="bottom" secondItem="gjF-Sh-aFu" secondAttribute="bottom" id="4Eq-mQ-agH"/>
@@ -34,9 +38,8 @@
                             <constraint firstItem="gjF-Sh-aFu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gIw-B8-uHB"/>
                             <constraint firstItem="gjF-Sh-aFu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="zMg-F5-GeT"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="鬧鐘" largeTitleDisplayMode="always" id="pTc-uD-Gmj">
+                    <navigationItem key="navigationItem" title="鬧鐘" id="pTc-uD-Gmj">
                         <barButtonItem key="leftBarButtonItem" title="編輯" id="ng6-8X-q0D">
                             <connections>
                                 <action selector="editButton:" destination="BYZ-38-t0r" id="mdI-R0-ZMg"/>
@@ -69,7 +72,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker autoresizesSubviews="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-Ck-2sT">
+                            <datePicker autoresizesSubviews="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-Ck-2sT">
                                 <rect key="frame" x="0.0" y="56" width="414" height="216"/>
                                 <color key="backgroundColor" name="myGrey"/>
                                 <connections>
@@ -84,6 +87,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="TUa-bd-ovj"/>
                         <color key="backgroundColor" red="0.14123594759999999" green="0.14101934429999999" blue="0.14902079109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="GbM-eL-SzW" firstAttribute="trailing" secondItem="TUa-bd-ovj" secondAttribute="trailing" id="3P5-va-4sq"/>
@@ -94,18 +98,17 @@
                             <constraint firstItem="GbM-eL-SzW" firstAttribute="leading" secondItem="TUa-bd-ovj" secondAttribute="leading" id="imO-cR-fXH"/>
                             <constraint firstItem="0MN-Ck-2sT" firstAttribute="top" secondItem="TUa-bd-ovj" secondAttribute="top" id="nFc-p9-mne"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="TUa-bd-ovj"/>
                     </view>
                     <navigationItem key="navigationItem" title="加入鬧鐘" id="wDO-of-4wA">
                         <barButtonItem key="backBarButtonItem" title="返回" id="2Kc-l9-M6I"/>
                         <barButtonItem key="leftBarButtonItem" title="取消" id="hzi-xy-OVS">
-                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
                                 <action selector="cancelButton:" destination="UhA-rt-2X6" id="2IG-bJ-XUl"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="儲存" id="vlR-sE-azi">
-                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
                                 <action selector="clickSaveButton:" destination="UhA-rt-2X6" id="3LW-1Z-STh"/>
                             </connections>
@@ -126,7 +129,7 @@
         <scene sceneID="WZh-qZ-ozY">
             <objects>
                 <tableViewController storyboardIdentifier="repeatDayVC" id="6ek-TM-ixb" customClass="RepeatDayTableViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="KhV-s2-eTU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="KhV-s2-eTU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="myGrey"/>
@@ -139,7 +142,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.18039363620000001" green="0.18038946389999999" blue="0.18039226529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -173,6 +176,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="g4B-dL-phG"/>
                         <color key="backgroundColor" name="myGrey"/>
                         <constraints>
                             <constraint firstItem="ooV-WH-V8f" firstAttribute="top" secondItem="g4B-dL-phG" secondAttribute="top" constant="200" id="dn8-ni-O7N"/>
@@ -180,7 +184,6 @@
                             <constraint firstItem="ooV-WH-V8f" firstAttribute="leading" secondItem="g4B-dL-phG" secondAttribute="leading" id="iN0-T5-Lky"/>
                             <constraint firstItem="g4B-dL-phG" firstAttribute="trailing" secondItem="ooV-WH-V8f" secondAttribute="trailing" id="jrH-eS-buL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="g4B-dL-phG"/>
                     </view>
                     <navigationItem key="navigationItem" title="標籤" id="fJK-AV-YaX"/>
                     <connections>
@@ -209,7 +212,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重複" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xs-MP-ekr">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="重複" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xs-MP-ekr">
                                                     <rect key="frame" x="20" y="15" width="47" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Z8C-It-OcS"/>
@@ -219,7 +222,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKg-lw-gvR">
-                                                    <rect key="frame" x="383" y="15" width="0.0" height="30"/>
+                                                    <rect key="frame" x="67" y="15" width="316" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="ANe-Zv-oze"/>
                                                     </constraints>
@@ -230,6 +233,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="4Xs-MP-ekr" secondAttribute="bottom" constant="15" id="HVd-pq-QFl"/>
+                                                <constraint firstItem="RKg-lw-gvR" firstAttribute="leading" secondItem="4Xs-MP-ekr" secondAttribute="trailing" id="Nlc-wY-RBe"/>
                                                 <constraint firstItem="4Xs-MP-ekr" firstAttribute="top" secondItem="I7e-SB-xty" secondAttribute="top" constant="15" id="SK6-cQ-bnC"/>
                                                 <constraint firstItem="4Xs-MP-ekr" firstAttribute="leading" secondItem="I7e-SB-xty" secondAttribute="leading" constant="20" id="a9R-fQ-bWb"/>
                                                 <constraint firstAttribute="trailing" secondItem="RKg-lw-gvR" secondAttribute="trailing" id="eL7-ro-NWz"/>
@@ -239,6 +243,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.18039363620000001" green="0.18038946389999999" blue="0.18039226529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="RKg-lw-gvR" firstAttribute="centerY" secondItem="Kj4-O6-dKz" secondAttribute="centerY" id="XpQ-ec-Uhr"/>
+                                        </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="60" id="z92-7s-ObP">
                                         <rect key="frame" x="0.0" y="88" width="414" height="60"/>
@@ -318,7 +325,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.18039363620000001" green="0.18038946389999999" blue="0.18039226529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="JMv-YZ-JDq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="60" id="JMv-YZ-JDq">
                                         <rect key="frame" x="0.0" y="208" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JMv-YZ-JDq" id="rk3-pw-31y">
@@ -369,7 +376,7 @@
                                                     <rect key="frame" x="20" y="0.0" width="374" height="60"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" systemColor="systemRedColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -394,7 +401,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsZ-zU-Xse" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2404" y="-546"/>
+            <point key="canvasLocation" x="2838" y="-425"/>
         </scene>
         <!--世界時鐘-->
         <scene sceneID="eLU-ID-k1X">
@@ -403,8 +410,8 @@
                     <view key="view" contentMode="scaleToFill" id="iab-jN-Sn1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Gr9-wS-DI1"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="世界時鐘" image="globe" catalog="system" id="8aO-El-caL"/>
                 </viewController>
@@ -416,11 +423,11 @@
         <scene sceneID="b41-2h-KEX">
             <objects>
                 <tabBarController id="t3s-G9-LrT" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9qj-tI-ggk">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="9qj-tI-ggk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemOrangeColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="Oy2-Zw-7d7" kind="relationship" relationship="viewControllers" id="jd4-To-n3i"/>
@@ -440,18 +447,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PmQ-Ye-sax" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="鬧鐘" image="alarm.fill" catalog="system" id="QYa-o5-sgR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="aLe-ge-KJw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" translucent="NO" largeTitles="YES" id="aLe-ge-KJw">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -469,14 +470,14 @@
                     <view key="view" contentMode="scaleToFill" id="lUP-bc-W6f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="5iy-VB-DAX"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="就寢時間" image="bed.double.fill" catalog="system" id="OXM-wv-Nij"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o1b-6N-uG3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1224" y="859"/>
+            <point key="canvasLocation" x="138" y="1142"/>
         </scene>
         <!--碼錶-->
         <scene sceneID="IOY-IV-ntp">
@@ -485,14 +486,14 @@
                     <view key="view" contentMode="scaleToFill" id="ZeL-kz-2ga">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="1Ez-QK-caK"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="碼錶" image="stopwatch.fill" catalog="system" id="l93-FJ-HKs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLP-vR-oNa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-509" y="855"/>
+            <point key="canvasLocation" x="1099" y="1142"/>
         </scene>
         <!--計時器-->
         <scene sceneID="mVz-8A-4U5">
@@ -501,14 +502,14 @@
                     <view key="view" contentMode="scaleToFill" id="ewE-Dk-eHt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="DgJ-en-wds"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="計時器" image="timer" catalog="system" id="2BY-Ms-Fqh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K27-yk-hhA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200" y="856"/>
+            <point key="canvasLocation" x="2070" y="1142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gLT-dq-Gk0">
@@ -534,12 +535,18 @@
     </scenes>
     <resources>
         <image name="alarm.fill" catalog="system" width="124" height="128"/>
-        <image name="bed.double.fill" catalog="system" width="128" height="80"/>
+        <image name="bed.double.fill" catalog="system" width="128" height="82"/>
         <image name="globe" catalog="system" width="128" height="121"/>
         <image name="stopwatch.fill" catalog="system" width="121" height="128"/>
         <image name="timer" catalog="system" width="128" height="121"/>
         <namedColor name="myGrey">
             <color red="0.14100000262260437" green="0.14100000262260437" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

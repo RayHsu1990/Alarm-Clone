@@ -68,6 +68,7 @@ class RepeatDayTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         isSelected[indexPath.row].toggle()
         tableView.reloadRows(at: [indexPath], with: .none)
+        
     }
 
 }

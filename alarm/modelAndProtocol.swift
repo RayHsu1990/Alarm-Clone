@@ -41,18 +41,18 @@ enum EditMode {
 }
 
     
-enum Days {
-    case sun , mon, tue, wed ,thu, fri, sat
+enum Days: Int, CaseIterable {
+    case mon, tue, wed ,thu, fri, sat, sun
     
     var title : String {
         switch self {
-        case .sun: return "日"
         case .mon: return "一"
         case .tue: return "二"
         case .wed: return "三"
         case .thu: return "四"
         case .fri: return "五"
         case .sat: return "六"
+        case .sun: return "日"
         }
     }
     func getTitle(prefix: String) -> String {

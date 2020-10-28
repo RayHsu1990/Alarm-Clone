@@ -34,7 +34,7 @@ class AddAlarmViewController: UIViewController {
 
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad() 
         modeChoose()
         pickTime()
         timePickerSetting()

@@ -137,7 +137,10 @@ extension AlarmViewController:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             alarms.remove(at: indexPath.row)
+//            tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
+//            tableView.endUpdates()
+            
         }
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -146,6 +149,7 @@ extension AlarmViewController:UITableViewDataSource, UITableViewDelegate {
 
     //MARK: Didselect
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if myTableView.isEditing  {
             popAddAlarm()
             addVC.tempAlarm = alarms[indexPath.row]
@@ -168,6 +172,7 @@ extension AlarmViewController:UITableViewDataSource, UITableViewDelegate {
 
 //MARK: 第二頁傳值過來
 extension AlarmViewController : AlarmSetDelegate {
+    #warning("這邊可以改成同一個func")
     func setAlarm(alarm: Alarm) {
         alarms.append(alarm)
         alarms.sort { (alarm1, alarm2) -> Bool in
