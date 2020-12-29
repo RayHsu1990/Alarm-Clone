@@ -3,5 +3,4 @@
 
 練習多頁間的傳值
 
-
-
+![image](https://github.com/RayHsu1990/Alarm-Clone/blob/master/alarm/alarm.001.jpeg)
